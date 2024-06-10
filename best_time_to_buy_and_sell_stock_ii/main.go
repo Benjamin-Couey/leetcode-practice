@@ -1,9 +1,5 @@
 package best_time_to_buy_and_sell_stock_ii
 
-import (
-	"fmt"
-)
-
 /* Assumes that:
 1 <= prices.length <= 3 * 10^4
 0 <= prices[i] <= 10^4 */
