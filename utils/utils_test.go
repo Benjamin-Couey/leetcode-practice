@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -473,9 +472,7 @@ func TestSliceInTree(t *testing.T) {
 
 	for _, testcase := range testcases {
 		root := LevelOrderToTree( testcase.tree_list )
-		fmt.Printf("%v\n", testcase.nums)
 		result := SliceInTree( testcase.nums, root )
-		fmt.Printf("%v\n", testcase.nums)
 		if result != testcase.solution {
 			t.Errorf(
 				"SliceInTree: for slice %v and tree %v returned %v, want %v",
