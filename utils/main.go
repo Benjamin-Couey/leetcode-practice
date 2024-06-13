@@ -28,6 +28,23 @@ func SliceEqual[V comparable]( a, b []V) bool {
 	return true
 }
 
+func MatrixEqual[V comparable]( a, b [][]V) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for row_i, _ := range(a) {
+		if len(a[row_i]) != len(b[row_i]) {
+			return false
+		}
+		for col_i, _ := range(a[row_i]) {
+			if a[row_i][col_i] != b[row_i][col_i] {
+				return false
+			}
+		}
+	}
+	return true
+}
+
 func SortFirstKInts( x []int, k int ) {
 	if k > len( x ) || k < 0 {
     return
@@ -240,7 +257,7 @@ func SliceInTree( nums []int, root *TreeNode ) bool {
 
 	/* recursiveSliceInTree is going to remove values from nums while it runs.
 	Since slices are pointers, to avoid whatever slice was passed to SliceInTree
-	also being mutated, we'll make a new slice for this function to use. */ 
+	also being mutated, we'll make a new slice for this function to use. */
 	mutable_slice := make([]int, 0)
 	mutable_slice = append(mutable_slice, nums...)
 	if len(mutable_slice) == 0 || root == nil {

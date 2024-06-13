@@ -32,6 +32,74 @@ func TestSliceEqual(t *testing.T) {
 	}
 }
 
+func TestMatrixEqual(t *testing.T) {
+	testcases := []struct {
+		a, b [][]int
+		solution bool
+	}{
+    { [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, true,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+			}, false,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 1, 2, },
+				{ 4, 5, },
+				{ 7, 8, },
+			}, false,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 1, 2, 3, },
+				{ 4, 0, 6, },
+				{ 7, 8, 9, },
+			}, false,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{}, false,
+		},
+		{ [][]int{}, [][]int{}, true, },
+  }
+
+	for _, testcase := range testcases {
+		result := MatrixEqual( testcase.a, testcase.b )
+
+		if result != testcase.solution {
+			t.Errorf(
+				"MatrixEqual: %t, want %t for matrices %v and %v",
+				result,
+				testcase.solution,
+				testcase.a,
+				testcase.b,
+			)
+		}
+	}
+}
+
 func TestSortFirstKInts(t *testing.T) {
 	testcases := []struct {
 		x, sorted_x []int
