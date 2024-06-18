@@ -45,6 +45,31 @@ func MatrixEqual[V comparable]( a, b [][]V) bool {
 	return true
 }
 
+func SliceEqualAnyOrder[V comparable]( a, b []V) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	mutable_b :=  make([]V, len(b))
+  copy(mutable_b, b)
+
+	for a_i, _ := range a {
+		found_match := false
+		b_i := 0
+		for !found_match && b_i < len(mutable_b) {
+			if a[a_i] == mutable_b[b_i] {
+				mutable_b = append( mutable_b[:b_i], mutable_b[b_i+1:]... )
+				found_match = true
+			}
+			b_i++
+		}
+		if !found_match {
+			return false
+		}
+	}
+	return true
+}
+
 func SortFirstKInts( x []int, k int ) {
 	if k > len( x ) || k < 0 {
     return

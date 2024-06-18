@@ -99,6 +99,34 @@ func TestMatrixEqual(t *testing.T) {
 	}
 }
 
+func TestSliceEqualAnyOrder(t *testing.T) {
+	testcases := []struct {
+		a, b []int
+		solution bool
+	}{
+    { []int{ 1, 2, 3 }, []int{ 1, 2, 3 }, true },
+		{ []int{ 1, 2, 3 }, []int{ 3, 2, 1 }, true },
+		{ []int{ 1, 2, 4 }, []int{ 1, 2, 3 }, false },
+		{ []int{ 1, 2 }, []int{ 1, 2, 3 }, false },
+		{ []int{ 1, 2, 3, 0, 0, 0 }, []int{ 1, 2, 2, 3, 5, 6 }, false },
+		{ []int{}, []int{}, true },
+  }
+
+	for _, testcase := range testcases {
+		result := SliceEqualAnyOrder( testcase.a, testcase.b )
+
+		if result != testcase.solution {
+			t.Errorf(
+				"SliceEqualAnyOrder: %t, want %t for slices %v and %v",
+				result,
+				testcase.solution,
+				testcase.a,
+				testcase.b,
+			)
+		}
+	}
+}
+
 func TestSortFirstKInts(t *testing.T) {
 	testcases := []struct {
 		x, sorted_x []int
