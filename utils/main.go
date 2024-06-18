@@ -70,6 +70,40 @@ func SliceEqualAnyOrder[V comparable]( a, b []V) bool {
 	return true
 }
 
+func MatrixEqualAnyOrder[V comparable]( a, b [][]V) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	mutable_b :=  make([][]V, len(b))
+	for i := range b {
+    mutable_b[i] = make([]V, len(b[i]))
+    copy(mutable_b[i], b[i])
+	}
+
+	for a_i, _ := range a {
+		// Find row in b that matches row at a_i
+		found_match := false
+		b_i := 0
+		for !found_match && b_i < len(mutable_b) {
+			// Skip past rows of different length
+			if len( a[a_i] ) == len( mutable_b[b_i] ) {
+				// Compare rows
+				if SliceEqualAnyOrder( a[a_i], mutable_b[b_i] ) {
+					found_match = true
+					mutable_b = append( mutable_b[:b_i], mutable_b[b_i+1:]... )
+				}
+			}
+			b_i++
+		}
+
+		if !found_match {
+			return false
+		}
+	}
+	return true
+}
+
 func SortFirstKInts( x []int, k int ) {
 	if k > len( x ) || k < 0 {
     return

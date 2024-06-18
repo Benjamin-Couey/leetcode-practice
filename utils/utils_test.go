@@ -127,6 +127,94 @@ func TestSliceEqualAnyOrder(t *testing.T) {
 	}
 }
 
+func TestMatrixEqualAnyOrder(t *testing.T) {
+	testcases := []struct {
+		a, b [][]int
+		solution bool
+	}{
+    { [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, true,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 3, 1, 2, },
+				{ 5, 4, 6, },
+				{ 9, 8, 7, },
+			}, true,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, },
+				{ 5, 6, },
+			}, [][]int{
+				{ 4, },
+				{ 5, 6, },
+				{ 1, 2, 3, },
+			}, true,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+			}, false,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 1, 2, },
+				{ 4, 5, },
+				{ 7, 8, },
+			}, false,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{
+				{ 1, 2, 3, },
+				{ 7, 5, 4, },
+				{ 7, 8, 9, },
+			}, false,
+		},
+		{ [][]int{
+				{ 1, 2, 3, },
+				{ 4, 5, 6, },
+				{ 7, 8, 9, },
+			}, [][]int{}, false,
+		},
+		{ [][]int{}, [][]int{}, true, },
+  }
+
+	for _, testcase := range testcases {
+		result := MatrixEqualAnyOrder( testcase.a, testcase.b )
+
+		if result != testcase.solution {
+			t.Errorf(
+				"MatrixEqualAnyOrder: %t, want %t for matrices %v and %v",
+				result,
+				testcase.solution,
+				testcase.a,
+				testcase.b,
+			)
+		}
+	}
+}
+
 func TestSortFirstKInts(t *testing.T) {
 	testcases := []struct {
 		x, sorted_x []int
