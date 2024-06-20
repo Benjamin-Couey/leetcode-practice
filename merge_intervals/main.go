@@ -10,9 +10,7 @@ func Merge(intervals [][]int) [][]int {
 
 	for _, interval := range intervals {
 		if len(merged_intervals) < 1 {
-			new_merged_interval := make([]int, len(interval))
-			copy( new_merged_interval, interval )
-			merged_intervals = append( merged_intervals, new_merged_interval )
+			append_to_intervals( &merged_intervals, interval )
 		} else {
 			merged := false
 			for index, merged_interval := range merged_intervals {
@@ -29,12 +27,16 @@ func Merge(intervals [][]int) [][]int {
 				}
 			}
 			if !merged {
-				new_merged_interval := make([]int, len(interval))
-				copy( new_merged_interval, interval )
-				merged_intervals = append( merged_intervals, new_merged_interval )
+				append_to_intervals( &merged_intervals, interval )
 			}
 		}
 	}
 
 	return merged_intervals
+}
+
+func append_to_intervals( intervals *[][]int, interval []int ) {
+	interval_to_append := make([]int, len(interval))
+	copy( interval_to_append, interval )
+	*intervals = append( *intervals, interval_to_append )
 }
