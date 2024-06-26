@@ -193,6 +193,18 @@ func SliceToLinkedListWithCycle( x []int, y int ) *ListNode {
 	return head
 }
 
+/* Will stop upon encountering a cycle. */
+func LinkedListToSlice(head *ListNode) []int {
+	return_slice := make( []int, 0 )
+	encountered_nodes := make( map[*ListNode]bool )
+	for head != nil && !encountered_nodes[ head ] {
+		return_slice = append( return_slice, head.Val )
+		encountered_nodes[ head ] = true
+		head = head.Next
+	}
+	return return_slice
+}
+
 func TraverseAndPrintTree(node *TreeNode) {
 	if node == nil {
 		return

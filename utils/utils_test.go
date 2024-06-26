@@ -399,6 +399,42 @@ func TestSliceToLinkedListWithCycle(t *testing.T) {
 	}
 }
 
+func TestLinkedListToSlice(t *testing.T) {
+	head_a := &ListNode{
+		1,
+		&ListNode{
+			2,
+			&ListNode{ 3, nil },
+		},
+	}
+
+	head_b := &ListNode{ 1, nil }
+	head_b.Next = head_b
+
+	testcases := []struct {
+		head *ListNode
+		solution []int
+		summary string
+	}{
+		{ head_a, []int{ 1, 2, 3 }, "head_a" },
+		{ head_b, []int{ 1 }, "head_b" },
+		{ nil, []int{}, "empty list" },
+	}
+
+	for _, testcase := range testcases {
+		result := LinkedListToSlice( testcase.head )
+
+		if !SliceEqual( result, testcase.solution ) {
+			t.Errorf(
+				"LinkedListToSlice: %v returned %v want %v",
+				testcase.summary,
+				result,
+				testcase.solution,
+			)
+		}
+	}
+}
+
 func TestIsSameTree(t *testing.T) {
 
 	root_a := &TreeNode{
