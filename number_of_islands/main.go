@@ -32,7 +32,7 @@ func encounterIsland(grid [][]byte, row, col int, encountered_cells map[[2]int]b
 	if !exists && grid[row][col] == byte('1') {
 		encountered_cells[ position ] = true
 		// Up
-		if row - 1 > 0 {
+		if row - 1 >= 0 {
 			encounterIsland( grid, row - 1, col, encountered_cells )
 		}
 		// Down
@@ -40,7 +40,7 @@ func encounterIsland(grid [][]byte, row, col int, encountered_cells map[[2]int]b
 			encounterIsland( grid, row + 1, col, encountered_cells )
 		}
 		// Left
-		if col - 1 > 0 {
+		if col - 1 >= 0 {
 			encounterIsland( grid, row, col - 1, encountered_cells )
 		}
 		// Right

@@ -24,6 +24,12 @@ func TestNumIslands(t *testing.T) {
 			}, 3,
 		},
 		{ [][]byte{
+				{ byte('0'), byte('1'), byte('0'), },
+				{ byte('1'), byte('1'), byte('0'), },
+				{ byte('0'), byte('0'), byte('0'), },
+			}, 1,
+		},
+		{ [][]byte{
 				{ byte('1'), byte('0'), byte('1'), },
 				{ byte('0'), byte('1'), byte('0'), },
 				{ byte('1'), byte('0'), byte('1'), },
