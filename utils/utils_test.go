@@ -693,3 +693,47 @@ func TestIsSameGraph(t *testing.T) {
 		}
 	}
 }
+
+func TestAdjacencyToGraph(t *testing.T) {
+
+	graph_a := &GraphNode{ 1, nil, }
+	node_a_2 := &GraphNode{ 2, nil, }
+	node_a_3 := &GraphNode{ 3, nil, }
+	graph_a.Neighbors = []*GraphNode{ node_a_2, node_a_3 }
+	node_a_2.Neighbors = []*GraphNode{ graph_a, node_a_3 }
+	node_a_3.Neighbors = []*GraphNode{ graph_a, node_a_2 }
+
+	graph_b := &GraphNode{ 1, nil, }
+	node_b_2 := &GraphNode{ 2, nil, }
+	node_b_3 := &GraphNode{ 3, nil, }
+	graph_b.Neighbors = []*GraphNode{ node_b_2, node_b_3 }
+	node_b_2.Neighbors = []*GraphNode{ graph_b }
+	node_b_3.Neighbors = []*GraphNode{ graph_b }
+
+	graph_c := &GraphNode{ 1, nil, }
+
+	testcases := []struct {
+		list [][]int
+		solution *GraphNode
+		err_nil bool
+	}{
+
+		{ [][]int{ []int{ 2, 3 }, []int{ 1, 3 }, []int{ 1, 2 } }, graph_a, true },
+		{ [][]int{ []int{ 2, 3 }, []int{ 1 }, []int{ 1 } }, graph_b, true },
+		{ [][]int{ []int{} }, graph_c, true },
+		{ [][]int{}, nil, true },
+		{ [][]int{ []int{ 5, 6 }, []int{ 4, 6 }, []int{ 4, 5 } }, nil, false },
+		{ [][]int{ []int{ 1, 2, 3 }, []int{ 1, 3 }, []int{ 1, 2 } }, nil, false },
+		{ [][]int{ []int{ 2, 2, 3 }, []int{ 1, 3 }, []int{ 1, 2 } }, nil, false },
+	}
+
+	for _, testcase := range testcases {
+		graph, error := AdjacencyToGraph( testcase.list )
+		if !IsSameGraph( graph, testcase.solution ) {
+			t.Errorf( "AdjacencyToGraph: Returned incorrect tree for level order %v\n", testcase.list )
+		}
+		if (error == nil) != testcase.err_nil {
+			t.Errorf( "AdjacencyToGraph: Returned incorrect error %v for level order %v\n", error, testcase.list )
+		}
+	}
+}

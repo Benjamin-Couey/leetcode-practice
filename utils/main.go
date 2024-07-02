@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"errors"
 	"sort"
 )
 
@@ -428,4 +429,37 @@ func buildNodeToConnected( node *GraphNode, node_to_connected map[int][]int ) {
 			}
 		}
 	}
+}
+
+func AdjacencyToGraph( list [][]int ) (*GraphNode, error) {
+
+	if len(list) < 1 {
+		return nil, nil
+	}
+
+	nodes := make( []*GraphNode, 0 )
+
+	for index := 1; index <= len(list); index++ {
+		new_node := &GraphNode{ index, make( []*GraphNode, 0 ) }
+		nodes = append( nodes, new_node )
+	}
+
+	for index, adjacencies := range list {
+		existing_adjacencies := make( map[int]bool )
+		for _, adjacency := range adjacencies {
+			_, exists := existing_adjacencies[ adjacency ]
+			if adjacency > len(list) {
+				return nil, errors.New("Node index out of range")
+			} else if index == adjacency - 1 {
+				return nil, errors.New("Adjacency defined self loop")
+			} else if exists {
+				return nil, errors.New("Adjacency defined repeated edge")
+			} else {
+				nodes[ index ].Neighbors = append( nodes[ index ].Neighbors, nodes[ adjacency-1 ] )
+				existing_adjacencies[ adjacency ] = true
+			}
+		}
+	}
+
+	return nodes[0], nil
 }
