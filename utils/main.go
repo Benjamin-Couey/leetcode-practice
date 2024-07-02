@@ -16,6 +16,15 @@ type ListNode struct {
 	Next *ListNode
 }
 
+/* Assumes that:
+Node.val is unique for each node. Node.val is also the unique index of the node.
+There are no repeated edges and no self-loops in the graph.
+The Graph is connected and all nodes can be visited starting from the given node. */
+type GraphNode struct {
+	Val int
+	Neighbors []*GraphNode
+}
+
 func SliceEqual[V comparable]( a, b []V) bool {
 	if len(a) != len(b) {
     return false
@@ -362,4 +371,61 @@ func recursiveSliceInTree( nums []int, root *TreeNode ) ( bool, []int ) {
 		right_bool, nums = recursiveSliceInTree( nums, root.Right )
 	}
 	return left_bool && right_bool, nums
+}
+
+func IsSameGraph(p *GraphNode, q *GraphNode) bool {
+	if p == nil || q == nil {
+		if p == q {
+			return true
+		} else {
+			return false
+		}
+	}
+
+	p_node_to_connected := make( map[int][]int )
+
+	// Build map of p's nodes to the nodes they connect to
+	buildNodeToConnected( p, p_node_to_connected )
+
+	q_node_to_connected := make( map[int][]int )
+
+	// Build map of q's nodes to the nodes they connect to
+	buildNodeToConnected( q, q_node_to_connected )
+
+	if len(p_node_to_connected) != len(q_node_to_connected) {
+		return false
+	}
+
+	// Compare maps
+	for key, p_connected := range p_node_to_connected {
+		q_connected, exists := q_node_to_connected[ key ]
+		if !exists {
+			return false
+		}
+		if !SliceEqual( p_connected, q_connected ) {
+			return false
+		}
+	}
+
+	return true
+}
+
+func buildNodeToConnected( node *GraphNode, node_to_connected map[int][]int ) {
+	_, exists := node_to_connected[ node.Val ]
+	if !exists {
+		connected_vals := make( []int, 0 )
+		for _, connected_node := range node.Neighbors {
+			if connected_node != nil {
+				connected_vals = append( connected_vals, connected_node.Val )
+			}
+		}
+
+		node_to_connected[ node.Val ] = connected_vals
+
+		for _, connected_node := range node.Neighbors {
+			if connected_node != nil {
+				buildNodeToConnected( connected_node, node_to_connected )
+			}
+		}
+	}
 }

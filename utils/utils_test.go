@@ -635,3 +635,61 @@ func TestSliceInTree(t *testing.T) {
 		}
 	}
 }
+
+func TestIsSameGraph(t *testing.T) {
+
+	graph_a := &GraphNode{ 1, nil, }
+	node_a_2 := &GraphNode{ 2, nil, }
+	node_a_3 := &GraphNode{ 3, nil, }
+	graph_a.Neighbors = []*GraphNode{ node_a_2, node_a_3 }
+	node_a_2.Neighbors = []*GraphNode{ graph_a, node_a_3 }
+	node_a_3.Neighbors = []*GraphNode{ graph_a, node_a_2 }
+
+	graph_b := &GraphNode{ 1, nil, }
+	node_b_2 := &GraphNode{ 2, nil, }
+	node_b_3 := &GraphNode{ 3, nil, }
+	graph_b.Neighbors = []*GraphNode{ node_b_2, node_b_3 }
+	node_b_2.Neighbors = []*GraphNode{ graph_b, node_b_3 }
+	node_b_3.Neighbors = []*GraphNode{ graph_b, node_b_2 }
+
+	graph_c := &GraphNode{ 4, nil, }
+	node_c_2 := &GraphNode{ 2, nil, }
+	node_c_3 := &GraphNode{ 3, nil, }
+	graph_c.Neighbors = []*GraphNode{ node_c_2, node_c_3 }
+	node_c_2.Neighbors = []*GraphNode{ graph_c, node_c_3 }
+	node_c_3.Neighbors = []*GraphNode{ graph_c, node_c_2 }
+
+	graph_d := &GraphNode{ 1, nil, }
+	node_d_2 := &GraphNode{ 2, nil, }
+	node_d_3 := &GraphNode{ 3, nil, }
+	graph_d.Neighbors = []*GraphNode{ node_d_2, node_d_3 }
+	node_d_2.Neighbors = []*GraphNode{ graph_d }
+	node_d_3.Neighbors = []*GraphNode{ graph_d }
+
+	graph_e := &GraphNode{ 1, nil, }
+	node_e_2 := &GraphNode{ 2, nil, }
+	graph_e.Neighbors = []*GraphNode{ node_e_2, }
+	node_e_2.Neighbors = []*GraphNode{ graph_e, }
+
+	testcases := []struct {
+		p, q *GraphNode
+		solution bool
+		summary string
+	}{
+		{ graph_a, graph_a, true, "graph_a and graph_a" },
+		{ graph_a, graph_b, true, "graph_a and graph_b" },
+		{ graph_a, graph_c, false, "graph_a and graph_c" },
+		{ graph_a, graph_d, false, "graph_a and graph_d" },
+		{ graph_a, graph_e, false, "graph_a and graph_e" },
+		{ nil, nil, true, "nil and nil" },
+		{ graph_a, nil, false, "graph_a and nil" },
+	}
+
+	for _, testcase := range testcases {
+		same := IsSameGraph( testcase.p, testcase.q )
+
+		if same != testcase.solution {
+			t.Errorf("IsSameGraph: for %v returned %v, want %v", testcase.summary, same, testcase.solution)
+		}
+	}
+}
