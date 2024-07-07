@@ -723,6 +723,7 @@ func TestAdjacencyToGraph(t *testing.T) {
 		{ [][]int{ []int{} }, graph_c, true },
 		{ [][]int{}, nil, true },
 		{ [][]int{ []int{ 5, 6 }, []int{ 4, 6 }, []int{ 4, 5 } }, nil, false },
+		{ [][]int{ []int{ 0, 3 }, []int{ 1, 3 }, []int{ 1, 2 } }, nil, false },
 		{ [][]int{ []int{ 1, 2, 3 }, []int{ 1, 3 }, []int{ 1, 2 } }, nil, false },
 		{ [][]int{ []int{ 2, 2, 3 }, []int{ 1, 3 }, []int{ 1, 2 } }, nil, false },
 	}
