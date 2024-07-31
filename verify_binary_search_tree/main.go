@@ -17,7 +17,7 @@ func IsValidBST(root *utils.TreeNode) bool {
 		return true
 	}
 
-	if !subtreeLessThan( root.Left, root.Val ) || !subtreeGreaterThan( root.Right, root.Val ) {
+	if !subtreeLessThan(root.Left, root.Val) || !subtreeGreaterThan(root.Right, root.Val) {
 		return false
 	} else {
 		return IsValidBST(root.Left) && IsValidBST(root.Right)
@@ -52,10 +52,10 @@ func subtreeGreaterThan(root *utils.TreeNode, val int) bool {
 The number of nodes in the tree is in the range [1, 104].
 -2^31 <= Node.val <= 2^31 - 1 and Node.val != 0. */
 func AltIsValidBST(root *utils.TreeNode) bool {
-	return recAltIsValidBST( root, 0, 0 )
+	return recAltIsValidBST(root, 0, 0)
 }
 
-func recAltIsValidBST(root *utils.TreeNode, lower_bound int, upper_bound int ) bool {
+func recAltIsValidBST(root *utils.TreeNode, lower_bound int, upper_bound int) bool {
 	if root == nil {
 		return false
 	}
@@ -70,12 +70,12 @@ func recAltIsValidBST(root *utils.TreeNode, lower_bound int, upper_bound int ) b
 
 	left_good := true
 	if root.Left != nil {
-		left_good = recAltIsValidBST( root.Left, lower_bound, root.Val )
+		left_good = recAltIsValidBST(root.Left, lower_bound, root.Val)
 	}
 
 	right_good := true
 	if root.Right != nil {
-		right_good = recAltIsValidBST( root.Right, root.Val, upper_bound )
+		right_good = recAltIsValidBST(root.Right, root.Val, upper_bound)
 	}
 
 	return left_good && right_good

@@ -17,23 +17,23 @@ func SummaryRanges(nums []int) []string {
 
 	range_left, range_right := nums[0], nums[0]
 	ranges := []string{}
-	for _, value := range( nums[1:] ) {
-		if value == range_right + 1 {
+	for _, value := range nums[1:] {
+		if value == range_right+1 {
 			range_right = value
 		} else {
 			if range_left == range_right {
-				ranges = append( ranges, fmt.Sprintf("%v", range_right) )
+				ranges = append(ranges, fmt.Sprintf("%v", range_right))
 			} else {
-				ranges = append( ranges, fmt.Sprintf("%v->%v", range_left, range_right) )
+				ranges = append(ranges, fmt.Sprintf("%v->%v", range_left, range_right))
 			}
 			range_left, range_right = value, value
 		}
 	}
 
 	if range_left == range_right {
-		ranges = append( ranges, fmt.Sprintf("%v", range_right) )
+		ranges = append(ranges, fmt.Sprintf("%v", range_right))
 	} else {
-		ranges = append( ranges, fmt.Sprintf("%v->%v", range_left, range_right) )
+		ranges = append(ranges, fmt.Sprintf("%v->%v", range_left, range_right))
 	}
 
 	return ranges

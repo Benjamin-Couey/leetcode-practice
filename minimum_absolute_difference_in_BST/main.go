@@ -10,7 +10,7 @@ const MAX_VAL int = 100000
 The number of nodes in the tree is in the range [2, 10^4].
 1 <= Node.val <= 10^5 */
 func GetMinimumDifference(root *utils.TreeNode) int {
-	return recursiveGetMinimumDifference( root, root )
+	return recursiveGetMinimumDifference(root, root)
 }
 
 /* Traverse the tree and pass each node to recursiveCompareToTree. Return the
@@ -21,12 +21,12 @@ func recursiveGetMinimumDifference(root *utils.TreeNode, cursor *utils.TreeNode)
 	if cursor == nil {
 		return MAX_VAL
 	}
-	diff := recursiveCompareToTree( root, cursor )
-	left_diff := recursiveGetMinimumDifference( root, cursor.Left )
+	diff := recursiveCompareToTree(root, cursor)
+	left_diff := recursiveGetMinimumDifference(root, cursor.Left)
 	if left_diff < diff {
 		diff = left_diff
 	}
-	right_diff := recursiveGetMinimumDifference( root, cursor.Right )
+	right_diff := recursiveGetMinimumDifference(root, cursor.Right)
 	if right_diff < diff {
 		diff = right_diff
 	}
@@ -43,20 +43,20 @@ func recursiveCompareToTree(cursor *utils.TreeNode, node *utils.TreeNode) int {
 		return diff
 	}
 	if cursor != node {
-		diff = absDiff( cursor.Val, node.Val )
+		diff = absDiff(cursor.Val, node.Val)
 	}
-	left_diff := recursiveCompareToTree( cursor.Left, node )
+	left_diff := recursiveCompareToTree(cursor.Left, node)
 	if left_diff < diff {
 		diff = left_diff
 	}
-	right_diff := recursiveCompareToTree( cursor.Right, node )
+	right_diff := recursiveCompareToTree(cursor.Right, node)
 	if right_diff < diff {
 		diff = right_diff
 	}
 	return diff
 }
 
-func absDiff( x, y int ) int {
+func absDiff(x, y int) int {
 	if x > y {
 		return x - y
 	}

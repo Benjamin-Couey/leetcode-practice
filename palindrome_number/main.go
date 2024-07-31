@@ -14,8 +14,8 @@ func IsPalindrome(x int) bool {
 	right_mod := 1
 
 	for left_mod >= right_mod {
-		left_digit := x / int( math.Pow10( left_mod ) )
-		right_digit := x % int( math.Pow10( right_mod ) )
+		left_digit := x / int(math.Pow10(left_mod))
+		right_digit := x % int(math.Pow10(right_mod))
 
 		if left_digit != right_digit {
 			return false

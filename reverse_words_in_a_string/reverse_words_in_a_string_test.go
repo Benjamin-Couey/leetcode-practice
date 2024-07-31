@@ -8,14 +8,14 @@ func TestReverseWords(t *testing.T) {
 	testcases := []struct {
 		s, solution string
 	}{
-		{ "the sky is blue", "blue is sky the" },
-		{ "  hello world  ", "world hello" },
-		{ "a good   example", "example good a" },
-		{ "word", "word" },
+		{"the sky is blue", "blue is sky the"},
+		{"  hello world  ", "world hello"},
+		{"a good   example", "example good a"},
+		{"word", "word"},
 	}
 
 	for _, testcase := range testcases {
-		result := ReverseWords( testcase.s )
+		result := ReverseWords(testcase.s)
 
 		if result != testcase.solution {
 			t.Errorf(

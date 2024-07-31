@@ -14,10 +14,10 @@ func SearchInsert(nums []int, target int) int {
 	lower_bound := 0
 	upper_bound := len(nums)
 
-	index := (upper_bound - lower_bound) / 2 + lower_bound
-	val := nums[ index ]
+	index := (upper_bound-lower_bound)/2 + lower_bound
+	val := nums[index]
 
-	for upper_bound - lower_bound > 1 {
+	for upper_bound-lower_bound > 1 {
 		if val == target {
 			return index
 		} else if val < target {
@@ -26,8 +26,8 @@ func SearchInsert(nums []int, target int) int {
 			upper_bound = index
 		}
 
-		index = (upper_bound - lower_bound) / 2 + lower_bound
-		val = nums[ index ]
+		index = (upper_bound-lower_bound)/2 + lower_bound
+		val = nums[index]
 	}
 
 	if val < target {

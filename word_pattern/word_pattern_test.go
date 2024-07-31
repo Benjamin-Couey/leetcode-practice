@@ -7,15 +7,15 @@ import (
 func TestWordPattern(t *testing.T) {
 	testcases := []struct {
 		pattern, s string
-		solution bool
+		solution   bool
 	}{
-		{ "abba", "dog cat cat dog", true },
-		{ "abba", "dog cat cat fish", false },
-		{ "aaaa", "dog cat cat dog", false },
+		{"abba", "dog cat cat dog", true},
+		{"abba", "dog cat cat fish", false},
+		{"aaaa", "dog cat cat dog", false},
 	}
 
 	for _, testcase := range testcases {
-		result := WordPattern( testcase.pattern, testcase.s )
+		result := WordPattern(testcase.pattern, testcase.s)
 
 		if result != testcase.solution {
 			t.Errorf(

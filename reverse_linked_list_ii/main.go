@@ -19,7 +19,7 @@ func ReverseBetween(head *utils.ListNode, left int, right int) *utils.ListNode {
 	index := 1
 
 	for head != nil {
-		new_node := utils.ListNode{ head.Val, nil }
+		new_node := utils.ListNode{head.Val, nil}
 		if index < left || index > right {
 			if return_head == nil && last_reverse == nil {
 				return_head = &new_node
@@ -55,5 +55,5 @@ func ReverseBetween(head *utils.ListNode, left int, right int) *utils.ListNode {
 		return_head = last_reverse
 	}
 
-  return return_head
+	return return_head
 }

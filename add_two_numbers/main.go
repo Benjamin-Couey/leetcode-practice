@@ -18,7 +18,7 @@ func AddTwoNumbers(l1 *utils.ListNode, l2 *utils.ListNode) *utils.ListNode {
 		if return_cursor == nil {
 			return_cursor = &return_list
 		} else {
-			new_node := utils.ListNode{ 0, nil }
+			new_node := utils.ListNode{0, nil}
 			return_cursor.Next = &new_node
 			return_cursor = return_cursor.Next
 		}

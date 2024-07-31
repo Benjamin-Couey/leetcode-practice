@@ -14,8 +14,8 @@ func InvertTree(root *utils.TreeNode) *utils.TreeNode {
 	}
 
 	left_child := root.Left
-	root.Left = InvertTree( root.Right )
-	root.Right = InvertTree( left_child )
+	root.Left = InvertTree(root.Right)
+	root.Right = InvertTree(left_child)
 	left := 0
 	if root.Left != nil {
 		left = root.Left.Val

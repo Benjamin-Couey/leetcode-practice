@@ -1,33 +1,33 @@
 package group_anagrams
 
 import (
-	"testing"
-	"leetcode/utils"
 	"fmt"
+	"leetcode/utils"
+	"testing"
 )
 
 func TestGroupAnagrams(t *testing.T) {
 	testcases := []struct {
-		strs []string
+		strs     []string
 		solution [][]string
 	}{
-		{ []string{ "eat", "tea", "tan", "ate", "nat", "bat" },
+		{[]string{"eat", "tea", "tan", "ate", "nat", "bat"},
 			[][]string{
-				{ "bat" },
-				{ "nat", "tan" },
-				{ "ate", "eat", "tea" },
+				{"bat"},
+				{"nat", "tan"},
+				{"ate", "eat", "tea"},
 			},
 		},
-		{ []string{ "" }, [][]string{	{ "" }, } },
-		{ []string{ "a" }, [][]string{	{ "a" }, } },
+		{[]string{""}, [][]string{{""}}},
+		{[]string{"a"}, [][]string{{"a"}}},
 	}
 
 	for _, testcase := range testcases {
-		result := GroupAnagrams( testcase.strs )
+		result := GroupAnagrams(testcase.strs)
 
 		fmt.Printf("%v\n", result)
 
-		if !utils.MatrixEqualAnyOrder( result, testcase.solution ) {
+		if !utils.MatrixEqualAnyOrder(result, testcase.solution) {
 			t.Errorf(
 				"GroupAnagrams: %v returned %v, want %v",
 				testcase.strs,

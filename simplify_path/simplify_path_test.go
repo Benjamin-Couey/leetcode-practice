@@ -6,18 +6,18 @@ import (
 
 func TestSimplifyPath(t *testing.T) {
 	testcases := []struct {
-		path string
+		path     string
 		solution string
 	}{
-		{ "/home/", "/home" },
-		{ "/home//foo/", "/home/foo" },
-		{ "/home/user/Documents/../Pictures", "/home/user/Pictures" },
-		{ "/.../a/../b/c/../d/./", "/.../b/d" },
-		{ "/../", "/" },
+		{"/home/", "/home"},
+		{"/home//foo/", "/home/foo"},
+		{"/home/user/Documents/../Pictures", "/home/user/Pictures"},
+		{"/.../a/../b/c/../d/./", "/.../b/d"},
+		{"/../", "/"},
 	}
 
 	for _, testcase := range testcases {
-		result := SimplifyPath( testcase.path )
+		result := SimplifyPath(testcase.path)
 
 		if result != testcase.solution {
 			t.Errorf(

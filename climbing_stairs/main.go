@@ -8,7 +8,7 @@ func ClimbStairs(n int) int {
 	n_minus_two := 0
 
 	for index := 0; index < n; index++ {
-		sum = n_minus_one +	n_minus_two
+		sum = n_minus_one + n_minus_two
 		n_minus_two = n_minus_one
 		n_minus_one = sum
 	}

@@ -11,8 +11,8 @@ func IsHeightBalanced(root *utils.TreeNode) bool {
 		return true
 	}
 
-	left_depth := max_depth_of_binary_tree.MaxDepth( root.Left )
-	right_depth := max_depth_of_binary_tree.MaxDepth( root.Right )
+	left_depth := max_depth_of_binary_tree.MaxDepth(root.Left)
+	right_depth := max_depth_of_binary_tree.MaxDepth(root.Right)
 
 	diff := left_depth - right_depth
 	if right_depth > left_depth {
@@ -23,5 +23,5 @@ func IsHeightBalanced(root *utils.TreeNode) bool {
 		return false
 	}
 
-	return IsHeightBalanced( root.Left ) && IsHeightBalanced( root.Right )
+	return IsHeightBalanced(root.Left) && IsHeightBalanced(root.Right)
 }

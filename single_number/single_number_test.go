@@ -6,16 +6,16 @@ import (
 
 func TestSingleNumber(t *testing.T) {
 	testcases := []struct {
-		nums []int
+		nums     []int
 		solution int
 	}{
-		{ []int{ 2, 2, 1 }, 1 },
-		{ []int{ 4, 1, 2, 1, 2 }, 4 },
-		{ []int{ 1 }, 1 },
+		{[]int{2, 2, 1}, 1},
+		{[]int{4, 1, 2, 1, 2}, 4},
+		{[]int{1}, 1},
 	}
 
 	for _, testcase := range testcases {
-		result := SingleNumber( testcase.nums )
+		result := SingleNumber(testcase.nums)
 
 		if result != testcase.solution {
 			t.Errorf(

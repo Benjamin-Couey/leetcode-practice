@@ -11,9 +11,9 @@ func SortedArrayToBST(nums []int) *utils.TreeNode {
 
 	index := len(nums) / 2
 
-	root := utils.TreeNode{ nums[index], nil, nil }
-	root.Left = SortedArrayToBST( nums[:index] )
-	root.Right = SortedArrayToBST( nums[index+1:] )
+	root := utils.TreeNode{nums[index], nil, nil}
+	root.Left = SortedArrayToBST(nums[:index])
+	root.Right = SortedArrayToBST(nums[index+1:])
 
 	return &root
 }

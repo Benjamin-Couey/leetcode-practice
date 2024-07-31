@@ -6,18 +6,18 @@ import (
 
 func TestIsValid(t *testing.T) {
 	testcases := []struct {
-		s string
+		s        string
 		solution bool
 	}{
-		{ "()", true },
-		{ "()[]{}", true },
-		{ "([{}])", true },
-		{ "())", false },
-		{ "(]", false },
+		{"()", true},
+		{"()[]{}", true},
+		{"([{}])", true},
+		{"())", false},
+		{"(]", false},
 	}
 
 	for _, testcase := range testcases {
-		is_valid := IsValid( testcase.s )
+		is_valid := IsValid(testcase.s)
 
 		if is_valid != testcase.solution {
 			t.Errorf(

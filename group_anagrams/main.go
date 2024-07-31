@@ -10,25 +10,25 @@ The answer may be returned in any order.
 0 <= strs[i].length <= 100
 strs[i] consists of lowercase English letters. */
 func GroupAnagrams(strs []string) [][]string {
-	grouped_anagrams := make( [][]string, 0 )
+	grouped_anagrams := make([][]string, 0)
 
 	for _, str := range strs {
 		if len(grouped_anagrams) < 1 {
-			grouped_anagrams = append( grouped_anagrams, []string{ str } )
+			grouped_anagrams = append(grouped_anagrams, []string{str})
 		} else {
 			index := 0
 			found_anagram := false
-			for !found_anagram && index < len( grouped_anagrams ) {
-				anagrams := grouped_anagrams[ index ]
-				if valid_anagram.IsAnagram( str, anagrams[0] ) {
-					anagrams = append( anagrams, str )
-					grouped_anagrams[ index ] = anagrams
+			for !found_anagram && index < len(grouped_anagrams) {
+				anagrams := grouped_anagrams[index]
+				if valid_anagram.IsAnagram(str, anagrams[0]) {
+					anagrams = append(anagrams, str)
+					grouped_anagrams[index] = anagrams
 					found_anagram = true
 				}
 				index++
 			}
 			if !found_anagram {
-				grouped_anagrams = append( grouped_anagrams, []string{ str } )
+				grouped_anagrams = append(grouped_anagrams, []string{str})
 			}
 		}
 	}

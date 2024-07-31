@@ -6,7 +6,7 @@ package rotate_array
 0 <= k <= 10^5 */
 func Rotate(nums []int, k int) {
 	rotate_index := len(nums) - k
-	copy( nums, append( nums[rotate_index:], nums[:rotate_index]... ) )
+	copy(nums, append(nums[rotate_index:], nums[:rotate_index]...))
 }
 
 /* Second implementation that rotates array in place with O(1) extra space. */
@@ -16,9 +16,9 @@ func AltRotate(nums []int, k int) {
 	right_index := len(nums) - k
 	for left_index < right_index {
 		for right_index < len(nums) {
-			temp := nums[ left_index ]
-			nums[ left_index ] = nums[ right_index ]
-			nums[ right_index ] = temp
+			temp := nums[left_index]
+			nums[left_index] = nums[right_index]
+			nums[right_index] = temp
 			left_index++
 			right_index++
 		}

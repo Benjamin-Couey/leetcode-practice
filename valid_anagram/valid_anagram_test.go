@@ -6,15 +6,15 @@ import (
 
 func TestIsAnagram(t *testing.T) {
 	testcases := []struct {
-		s, t string
+		s, t     string
 		solution bool
 	}{
-		{ "anagram", "nagaram", true },
-		{ "rat", "car", false },
+		{"anagram", "nagaram", true},
+		{"rat", "car", false},
 	}
 
 	for _, testcase := range testcases {
-		result := IsAnagram( testcase.s, testcase.t )
+		result := IsAnagram(testcase.s, testcase.t)
 
 		if result != testcase.solution {
 			t.Errorf(

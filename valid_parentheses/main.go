@@ -20,15 +20,15 @@ func IsValid(s string) bool {
 	stack := []rune{}
 
 	for _, rune := range s {
-		_, exists := left_parentheses[ rune ]
+		_, exists := left_parentheses[rune]
 		if exists {
-			stack = append( stack, rune )
+			stack = append(stack, rune)
 		} else {
 			if len(stack) < 1 {
 				return false
 			}
 			last := len(stack) - 1
-			if right_to_left_parentheses[ rune ] != stack[ last ] {
+			if right_to_left_parentheses[rune] != stack[last] {
 				return false
 			} else {
 				stack = stack[:last]

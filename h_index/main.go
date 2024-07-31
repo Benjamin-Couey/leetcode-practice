@@ -14,10 +14,10 @@ func HIndex(citations []int) int {
 	local_citations := make([]int, len(citations))
 	copy(local_citations, citations)
 	// TODO: Replace with my own sort implementation
-	sort.Ints( local_citations )
+	sort.Ints(local_citations)
 	h_index := len(local_citations)
 	index := 0
-	for index < len(local_citations) && local_citations[ index ] < h_index {
+	for index < len(local_citations) && local_citations[index] < h_index {
 		h_index--
 		index++
 	}
@@ -29,8 +29,8 @@ Trades space for speed.*/
 func AltHIndex(citations []int) int {
 	counts := make([]int, 1001)
 	max_num := 0
-	for _, num := range (citations) {
-		counts[ num ]++
+	for _, num := range citations {
+		counts[num]++
 		if num > max_num {
 			max_num = num
 		}
@@ -39,7 +39,7 @@ func AltHIndex(citations []int) int {
 	index := max_num
 	num_higher := 0
 	for index > 0 {
-		if (counts[ index ] + num_higher) >= index {
+		if (counts[index] + num_higher) >= index {
 			return index
 		} else {
 			num_higher += counts[index]

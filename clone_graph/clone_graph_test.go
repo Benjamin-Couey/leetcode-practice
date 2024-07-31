@@ -1,23 +1,23 @@
 package clone_graph
 
 import (
-	"testing"
 	"leetcode/utils"
+	"testing"
 )
 
 func TestCloneGraph(t *testing.T) {
 	testcases := []struct {
 		node [][]int
 	}{
-		{ [][]int{} },
-		{ [][]int{ []int{} } },
-		{ [][]int{ []int{ 2 }, []int{ 1 } } },
-		{ [][]int{ []int{ 2, 3 }, []int{ 1 }, []int{ 1 } } },
-		{ [][]int{ []int{ 2, 4 }, []int{ 1, 3 }, []int{ 2, 4 }, []int{ 1, 3 } } },
+		{[][]int{}},
+		{[][]int{[]int{}}},
+		{[][]int{[]int{2}, []int{1}}},
+		{[][]int{[]int{2, 3}, []int{1}, []int{1}}},
+		{[][]int{[]int{2, 4}, []int{1, 3}, []int{2, 4}, []int{1, 3}}},
 	}
 
 	for _, testcase := range testcases {
-		node, error := utils.AdjacencyToGraph( testcase.node )
+		node, error := utils.AdjacencyToGraph(testcase.node)
 		if error != nil {
 			t.Errorf(
 				"TestCloneGraph: Error when converting %v, AdjacencyToGraph raised %v",
@@ -26,9 +26,9 @@ func TestCloneGraph(t *testing.T) {
 			)
 		}
 
-		result := CloneGraph( node )
+		result := CloneGraph(node)
 
-		if !utils.IsSameGraph( result, node ) {
+		if !utils.IsSameGraph(result, node) {
 			t.Errorf(
 				"TestCloneGraph: %v returned %v, want %v",
 				testcase.node,

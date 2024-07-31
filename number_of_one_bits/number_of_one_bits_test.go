@@ -8,13 +8,13 @@ func TestHammingWeight(t *testing.T) {
 	testcases := []struct {
 		n, solution int
 	}{
-		{ 11, 3 },
-		{ 128, 1 },
-		{ 2147483645, 30 },
+		{11, 3},
+		{128, 1},
+		{2147483645, 30},
 	}
 
 	for _, testcase := range testcases {
-		result := HammingWeight( testcase.n )
+		result := HammingWeight(testcase.n)
 
 		if result != testcase.solution {
 			t.Errorf(

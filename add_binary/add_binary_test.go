@@ -8,13 +8,13 @@ func TestAddBinary(t *testing.T) {
 	testcases := []struct {
 		a, b, solution string
 	}{
-		{ "11", "1", "100" },
-		{ "1010", "1011", "10101" },
-		{ "0", "0", "0" },
+		{"11", "1", "100"},
+		{"1010", "1011", "10101"},
+		{"0", "0", "0"},
 	}
 
 	for _, testcase := range testcases {
-		result := AddBinary( testcase.a, testcase.b )
+		result := AddBinary(testcase.a, testcase.b)
 
 		if result != testcase.solution {
 			t.Errorf(

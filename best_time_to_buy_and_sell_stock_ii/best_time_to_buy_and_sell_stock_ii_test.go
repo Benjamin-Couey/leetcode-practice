@@ -6,16 +6,16 @@ import (
 
 func TestMaxProfit(t *testing.T) {
 	testcases := []struct {
-		prices []int
+		prices   []int
 		solution int
 	}{
-		{ []int{ 7, 1, 5, 3, 6, 4 }, 7 },
-		{ []int{ 1, 2, 3, 4, 5 }, 4 },
-		{ []int{ 7, 6, 4, 3, 1 }, 0 },
+		{[]int{7, 1, 5, 3, 6, 4}, 7},
+		{[]int{1, 2, 3, 4, 5}, 4},
+		{[]int{7, 6, 4, 3, 1}, 0},
 	}
 
 	for _, testcase := range testcases {
-		result := MaxProfit( testcase.prices )
+		result := MaxProfit(testcase.prices)
 
 		if result != testcase.solution {
 			t.Errorf(

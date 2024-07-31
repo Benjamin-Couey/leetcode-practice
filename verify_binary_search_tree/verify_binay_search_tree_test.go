@@ -1,24 +1,24 @@
 package verify_binary_search_tree
 
 import (
-	"testing"
 	"leetcode/utils"
+	"testing"
 )
 
 func TestIsValidBST(t *testing.T) {
 	testcases := []struct {
 		tree_list []int
-		solution bool
+		solution  bool
 	}{
-		{ []int{ 2, 1, 3 }, true },
-		{ []int{ 3, 2, 4, 1, 0, 0, 5 }, true },
-		{ []int{ 5, 1, 4, 0, 0, 3, 6 }, false },
-		{ []int{ 3, 1, 4, 0, 0, 2, 5 }, false },
+		{[]int{2, 1, 3}, true},
+		{[]int{3, 2, 4, 1, 0, 0, 5}, true},
+		{[]int{5, 1, 4, 0, 0, 3, 6}, false},
+		{[]int{3, 1, 4, 0, 0, 2, 5}, false},
 	}
 
 	for _, testcase := range testcases {
-		root := utils.LevelOrderToTree( testcase.tree_list )
-		result := IsValidBST( root )
+		root := utils.LevelOrderToTree(testcase.tree_list)
+		result := IsValidBST(root)
 
 		if result != testcase.solution {
 			t.Errorf(
@@ -34,18 +34,18 @@ func TestIsValidBST(t *testing.T) {
 func TestAltIsValidBST(t *testing.T) {
 	testcases := []struct {
 		tree_list []int
-		solution bool
+		solution  bool
 	}{
-		{ []int{ 2, 1, 3 }, true },
-		{ []int{ 3, 2, 4, 1, 0, 0, 5 }, true },
-		{ []int{ 5, 1, 4, 0, 0, 3, 6 }, false },
-		{ []int{ 3, 1, 4, 0, 0, 2, 5 }, false },
-		{ []int{}, false },
+		{[]int{2, 1, 3}, true},
+		{[]int{3, 2, 4, 1, 0, 0, 5}, true},
+		{[]int{5, 1, 4, 0, 0, 3, 6}, false},
+		{[]int{3, 1, 4, 0, 0, 2, 5}, false},
+		{[]int{}, false},
 	}
 
 	for _, testcase := range testcases {
-		root := utils.LevelOrderToTree( testcase.tree_list )
-		result := AltIsValidBST( root )
+		root := utils.LevelOrderToTree(testcase.tree_list)
+		result := AltIsValidBST(root)
 
 		if result != testcase.solution {
 			t.Errorf(

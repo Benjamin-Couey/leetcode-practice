@@ -19,15 +19,15 @@ the sets for n = 4 for higher always decrease.
 
 Assumes that 1 <= n <= 2^31 - 1 */
 func IsHappy(n int) bool {
-	encountered_nums := make( map[int]bool )
+	encountered_nums := make(map[int]bool)
 
 	for n != 1 {
-		_, exists := encountered_nums[ n ]
+		_, exists := encountered_nums[n]
 		if exists {
 			return false
 		}
-		encountered_nums[ n ] = true
-		n = sumSquaredDigits( n )
+		encountered_nums[n] = true
+		n = sumSquaredDigits(n)
 	}
 
 	return true
@@ -40,7 +40,7 @@ func sumSquaredDigits(n int) int {
 	for n > 0 {
 		quotient := n / 10
 		remainder := n % 10
-		sum_of_squared_digits += int( math.Pow( float64(remainder), float64(2) ) )
+		sum_of_squared_digits += int(math.Pow(float64(remainder), float64(2)))
 		n = quotient
 	}
 

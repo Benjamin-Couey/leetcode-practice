@@ -1,23 +1,23 @@
 package linked_list_cycle
 
 import (
-	"testing"
 	"leetcode/utils"
+	"testing"
 )
 
 func TestHasCycle(t *testing.T) {
 	testcases := []struct {
-		list []int
+		list        []int
 		cycle_index int
-		solution bool
+		solution    bool
 	}{
-		{ []int{ 3, 2, 0, -4 }, 1, true },
-		{ []int{ 1, 2 }, 0, true },
-		{ []int{ 1 }, -1, false },
+		{[]int{3, 2, 0, -4}, 1, true},
+		{[]int{1, 2}, 0, true},
+		{[]int{1}, -1, false},
 	}
 
 	for _, testcase := range testcases {
-		result := HasCycle( utils.SliceToLinkedListWithCycle( testcase.list, testcase.cycle_index ) )
+		result := HasCycle(utils.SliceToLinkedListWithCycle(testcase.list, testcase.cycle_index))
 
 		if result != testcase.solution {
 			t.Errorf(

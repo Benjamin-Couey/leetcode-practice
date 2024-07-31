@@ -9,7 +9,7 @@ The number of nodes in the tree is in the range [1, 1000].
 -100 <= Node.Val <= 100 and Node.Val != 0 */
 
 func IsSymmetric(root *utils.TreeNode) bool {
-	return recursiveIsSymmetric( root.Left, root.Right )
+	return recursiveIsSymmetric(root.Left, root.Right)
 }
 
 func recursiveIsSymmetric(leftCursor, rightCursor *utils.TreeNode) bool {
@@ -21,5 +21,5 @@ func recursiveIsSymmetric(leftCursor, rightCursor *utils.TreeNode) bool {
 		return false
 	}
 
-	return recursiveIsSymmetric( leftCursor.Left, rightCursor.Right ) && recursiveIsSymmetric( leftCursor.Right, rightCursor.Left )
+	return recursiveIsSymmetric(leftCursor.Left, rightCursor.Right) && recursiveIsSymmetric(leftCursor.Right, rightCursor.Left)
 }

@@ -8,12 +8,12 @@ func RemoveDuplicates(nums []int) int {
 	count := 1
 	current_num := nums[0]
 	index := 1
-	upper_bound := len( nums )
+	upper_bound := len(nums)
 	for index < upper_bound {
 		if nums[index] == current_num {
 			count++
 			if count > 2 {
-				nums = append( nums[:index], nums[index+1:]...)
+				nums = append(nums[:index], nums[index+1:]...)
 				upper_bound--
 			} else {
 				index++

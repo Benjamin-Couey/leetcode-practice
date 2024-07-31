@@ -10,15 +10,15 @@ func MaxProfit(prices []int) int {
 	/* Sell as soon as value starts decreasing and don't buy until value stops
 	decreasing. */
 	for index := 1; index < len(prices); index++ {
-		if prices[ index ] < prices[ sell_index ] {
-			sum_profit += prices[ sell_index ] - prices[ buy_index ]
+		if prices[index] < prices[sell_index] {
+			sum_profit += prices[sell_index] - prices[buy_index]
 			buy_index = index
 			sell_index = buy_index
 		} else {
 			sell_index = index
 		}
 	}
-	sum_profit += prices[ sell_index ] - prices[ buy_index ]
+	sum_profit += prices[sell_index] - prices[buy_index]
 
 	return sum_profit
 }

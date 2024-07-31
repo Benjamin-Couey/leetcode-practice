@@ -5,8 +5,8 @@ package number_of_one_bits
 func HammingWeight(n int) int {
 	count := 0
 	for index := 0; index < 32; index++ {
-		if n & 1 == 1 {
-			count ++
+		if n&1 == 1 {
+			count++
 		}
 		n >>= 1
 	}

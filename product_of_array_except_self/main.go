@@ -12,25 +12,25 @@ func ProductExceptSelf(nums []int) []int {
 	product := 1
 	for index, num := range nums {
 		product *= num
-		prefix_products[ index ] = product
+		prefix_products[index] = product
 	}
 
 	suffix_products := make([]int, len(nums))
 	product = 1
-	for index:=len(nums)-1; index >= 0; index-- {
+	for index := len(nums) - 1; index >= 0; index-- {
 		product *= nums[index]
-		suffix_products[ index ] = product
+		suffix_products[index] = product
 	}
 
 	return_slice := make([]int, len(nums))
 
 	for index, _ := range return_slice {
 		if index == 0 {
-			return_slice[ index ] = suffix_products[ index + 1 ]
-		} else if index == len(return_slice) - 1 {
-			return_slice[ index ] = prefix_products[ index - 1 ]
+			return_slice[index] = suffix_products[index+1]
+		} else if index == len(return_slice)-1 {
+			return_slice[index] = prefix_products[index-1]
 		} else {
-			return_slice[ index ] = prefix_products[ index - 1 ] * suffix_products[ index + 1 ]
+			return_slice[index] = prefix_products[index-1] * suffix_products[index+1]
 		}
 	}
 
@@ -46,24 +46,24 @@ func AltProductExceptSelf(nums []int) []int {
 
 	suffix_products := make([]int, len(nums))
 	product := 1
-	for index:=len(nums)-1; index >= 0; index-- {
+	for index := len(nums) - 1; index >= 0; index-- {
 		product *= nums[index]
-		suffix_products[ index ] = product
+		suffix_products[index] = product
 	}
 
 	product = 1
 	for index, num := range nums {
 		product *= num
-		nums[ index ] = product
+		nums[index] = product
 	}
 
 	for index, _ := range suffix_products {
 		if index == 0 {
-			suffix_products[ index ] = suffix_products[ index + 1 ]
-		} else if index == len(suffix_products) - 1 {
-			suffix_products[ index ] = nums[ index - 1 ]
+			suffix_products[index] = suffix_products[index+1]
+		} else if index == len(suffix_products)-1 {
+			suffix_products[index] = nums[index-1]
 		} else {
-			suffix_products[ index ] = nums[ index - 1 ] * suffix_products[ index + 1 ]
+			suffix_products[index] = nums[index-1] * suffix_products[index+1]
 		}
 	}
 

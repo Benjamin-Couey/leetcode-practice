@@ -12,7 +12,7 @@ func HasPathSum(root *utils.TreeNode, targetSum int) bool {
 	if root == nil {
 		return false
 	}
-  return recursiveHasPathSum( root, 0, targetSum )
+	return recursiveHasPathSum(root, 0, targetSum)
 }
 
 func recursiveHasPathSum(node *utils.TreeNode, currentSum int, targetSum int) bool {
@@ -25,5 +25,5 @@ func recursiveHasPathSum(node *utils.TreeNode, currentSum int, targetSum int) bo
 
 	currentSum += node.Val
 
-  return recursiveHasPathSum( node.Left, currentSum, targetSum ) ||  recursiveHasPathSum( node.Right, currentSum, targetSum )
+	return recursiveHasPathSum(node.Left, currentSum, targetSum) || recursiveHasPathSum(node.Right, currentSum, targetSum)
 }

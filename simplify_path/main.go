@@ -12,7 +12,7 @@ path is a valid absolute Unix path.*/
 func SimplifyPath(path string) string {
 
 	return_path := []rune{}
-	path_runes := []rune( path )
+	path_runes := []rune(path)
 	dot_count := 0
 	for _, rune := range path_runes {
 		if rune == FORWARD_SLASH {
@@ -22,7 +22,7 @@ func SimplifyPath(path string) string {
 				slashes_encountered := 0
 				index := len(return_path) - 1
 				for slashes_encountered < 2 && index >= 0 {
-					if return_path[ index ] == FORWARD_SLASH {
+					if return_path[index] == FORWARD_SLASH {
 						slashes_encountered++
 					}
 					index--
@@ -34,27 +34,27 @@ func SimplifyPath(path string) string {
 				}
 			} else if dot_count > PREVIOUS_DIR {
 				for index := 0; index < dot_count; index++ {
-					return_path = append( return_path, DOT )
+					return_path = append(return_path, DOT)
 				}
 			}
 			// Reset count of dots
 			dot_count = 0
 			// Avoid repeated slashes
-			if len( return_path ) < 1 || return_path[ len(return_path)-1 ] != FORWARD_SLASH {
-				return_path = append( return_path, rune )
+			if len(return_path) < 1 || return_path[len(return_path)-1] != FORWARD_SLASH {
+				return_path = append(return_path, rune)
 			}
 		} else if rune == DOT {
 			dot_count++
 		} else {
-			return_path = append( return_path, rune )
+			return_path = append(return_path, rune)
 		}
 	}
 
 	// Remove trailing slash if not root
 	last_index := len(return_path) - 1
-	if len( return_path ) > 1 && return_path[ last_index ] == FORWARD_SLASH {
+	if len(return_path) > 1 && return_path[last_index] == FORWARD_SLASH {
 		return_path = return_path[:last_index]
 	}
 
-	return string( return_path )
+	return string(return_path)
 }

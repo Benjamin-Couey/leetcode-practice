@@ -11,22 +11,22 @@ func IsAnagram(s string, t string) bool {
 		return false
 	}
 
-	rune_counts := make( map[rune]int )
+	rune_counts := make(map[rune]int)
 
 	for index := 0; index < len(rune_s); index++ {
 		s_rune := rune_s[index]
-		_, exists := rune_counts[ s_rune ]
+		_, exists := rune_counts[s_rune]
 		if !exists {
-			rune_counts[ s_rune ] = 0
+			rune_counts[s_rune] = 0
 		}
-		rune_counts[ s_rune ]++
+		rune_counts[s_rune]++
 
 		t_rune := rune_t[index]
-		_, exists = rune_counts[ t_rune ]
+		_, exists = rune_counts[t_rune]
 		if !exists {
-			rune_counts[ t_rune ] = 0
+			rune_counts[t_rune] = 0
 		}
-		rune_counts[ t_rune ]--
+		rune_counts[t_rune]--
 	}
 
 	for _, value := range rune_counts {

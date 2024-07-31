@@ -9,14 +9,14 @@ Each input HAS exactly one solution, and the same element twice cannot be used
 twice. */
 func TwoSum(nums []int, target int) []int {
 
-	pair_to_index := make( map[int]int )
+	pair_to_index := make(map[int]int)
 
 	for index, num := range nums {
-		pair_index, exists := pair_to_index[ num ]
-		if exists{
-			return []int{ pair_index, index }
+		pair_index, exists := pair_to_index[num]
+		if exists {
+			return []int{pair_index, index}
 		}
-		pair_to_index[ target - num ] = index
+		pair_to_index[target-num] = index
 	}
 
 	return nil

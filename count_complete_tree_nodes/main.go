@@ -9,7 +9,7 @@ func CountNodes(root *utils.TreeNode) int {
 		return 0
 	}
 	count := 1
-	count += CountNodes( root.Left )
-	count += CountNodes( root.Right )
+	count += CountNodes(root.Left)
+	count += CountNodes(root.Right)
 	return count
 }

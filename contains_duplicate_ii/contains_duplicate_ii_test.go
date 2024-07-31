@@ -6,17 +6,17 @@ import (
 
 func TestContainsNearbyDuplicate(t *testing.T) {
 	testcases := []struct {
-		nums []int
-		k int
+		nums     []int
+		k        int
 		solution bool
 	}{
-		{ []int{ 1, 2, 3, 1 }, 3, true },
-		{ []int{ 1, 0, 1, 1 }, 1, true },
-		{ []int{ 1, 2, 3, 1, 2, 3 }, 2, false },
+		{[]int{1, 2, 3, 1}, 3, true},
+		{[]int{1, 0, 1, 1}, 1, true},
+		{[]int{1, 2, 3, 1, 2, 3}, 2, false},
 	}
 
 	for _, testcase := range testcases {
-		result := ContainsNearbyDuplicate( testcase.nums, testcase.k )
+		result := ContainsNearbyDuplicate(testcase.nums, testcase.k)
 
 		if result != testcase.solution {
 			t.Errorf(
