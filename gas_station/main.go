@@ -16,7 +16,7 @@ func CanCompleteCircuit(gas []int, cost []int) int {
 	}
 
 	if net_sum < 0 {
-		return net_sum
+		return -1
 	}
 
 	left_sum := 0
