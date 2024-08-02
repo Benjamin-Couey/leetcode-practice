@@ -4,11 +4,13 @@ import (
 	"testing"
 )
 
+// Testcase describes a testcase for an implementation of the h-index problem.
 type Testcase struct {
 	citations []int
 	solution  int
 }
 
+// A set of testcases all h-index implementations should be tested against.
 var testcases []Testcase = []Testcase{
 	{[]int{3, 0, 6, 1, 5}, 3},
 	{[]int{9, 5, 6, 7, 0, 5}, 5},

@@ -1,9 +1,18 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/plus-one/description/
+*/
 package plus_one
 
-/* Assumes that:
-1 <= digits.length <= 100
-0 <= digits[i] <= 9
-digits does not contain any leading 0's. */
+/*
+PlusOne returns a slice representation of an integer after adding 1 to digits.
+
+PlusOne assumes that:
+1 <= digits.length <= 100,
+0 <= digits[i] <= 9,
+digits is ordered from most significant to least significant in left-to-right order,
+and digits does not contain any leading 0's.
+*/
 func PlusOne(digits []int) []int {
 
 	sum := make([]int, 0)

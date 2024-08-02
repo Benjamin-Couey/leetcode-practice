@@ -1,12 +1,19 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/product-of-array-except-self/description/
+*/
 package product_of_array_except_self
 
-/* Assumes that:
-Needs to be implemented so it runs in  O(n) time and without using the division
-operation.
-
-2 <= nums.length <= 105
--30 <= nums[i] <= 30
-The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer. */
+/*
+ProductExceptSelf returns a slice such that return_slice[i] is equal to the
+product of all elements of nums except nums[i]. For the sake of the problem,
+ProductExceptSelf is implemented so it runs in  O(n) time and without using the
+division operation.
+ProductExceptSelf assumes that:
+2 <= nums.length <= 10^5,
+-30 <= nums[i] <= 30,
+and the product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+*/
 func ProductExceptSelf(nums []int) []int {
 	prefix_products := make([]int, len(nums))
 	product := 1
@@ -37,11 +44,17 @@ func ProductExceptSelf(nums []int) []int {
 	return return_slice
 }
 
-/* Alternative that uses O(1) extra space by using the necessary nums and return
-slice.
-Arguably still O(n) space complexity since if you are willing to modify nums,
-there's no reason you can't put the result there, making the return slice an
-extra space allocation. */
+
+/*
+AltProductExceptSelf is an alternative implementation of ProductExceptSelf
+which uses O(1) extra space instead of O(n), as defiend by the follow up to
+the problem which states that "the output array does not count as extra space
+for space complexity analysis".
+
+Arguably, this implementation still uses O(n) extra space since if you are
+willing to modify nums, there's no reason you can't put the result there,
+making the return slice an extra space allocation.
+*/
 func AltProductExceptSelf(nums []int) []int {
 
 	suffix_products := make([]int, len(nums))

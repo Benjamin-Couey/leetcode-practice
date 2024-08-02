@@ -1,9 +1,16 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/longest-common-prefix/description/
+*/
 package longest_common_prefix
 
-/* Assumes that:
-1 <= strs.length <= 200
-0 <= strs[i].length <= 200
-strs[i] consists of only lowercase English letters. */
+/*
+LongestCommonPrefix returns the longest common prefix among strings in strs.
+LongestCommonPrefix assumes that:
+1 <= strs.length <= 200,
+0 <= strs[i].length <= 200,
+and strs[i] consists of only lowercase English letters.
+*/
 func LongestCommonPrefix(strs []string) string {
 	lcp := ""
 

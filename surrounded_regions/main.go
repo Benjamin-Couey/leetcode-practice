@@ -1,14 +1,20 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/surrounded-regions/description/
+*/
 package surrounded_regions
 
-/* Assumes that:
-A cell is connected to adjacent cells horizontally or vertically.
-Every connected 'O' cell forms a region.
-A region is surrounded with 'X' cells if the region is connected with 'X' cells
-and none of the region cells are on the edge of the board.
-m == board.length.
-n == board[i].length.
-1 <= m, n <= 200.
-board[i][j] is 'X' or 'O'. */
+/*
+Solve modifies board by capturing regions that are surrounded. A cell is
+connected to adjacent cells horizontally or vertically. Every connected 'O' cell
+forms a region. A region is surrounded with 'X' cells if the region is connected
+with 'X' cells and none of the region cells are on the edge of the board.
+Solve assumes that:
+m == board.length,
+n == board[i].length,
+1 <= m, n <= 200,
+and board[i][j] is 'X' or 'O'.
+*/
 func Solve(board [][]byte) {
 
 	if len(board) < 3 || len(board[0]) < 3 {
@@ -20,8 +26,10 @@ func Solve(board [][]byte) {
 	last_row := len(board) - 1
 	last_col := len(board[0]) - 1
 
-	// Find all cells in regions which touch the border and thus should not be
-	// captured.
+	/*
+	Find all cells in regions which touch the border and thus should not be
+	captured.
+	*/
 	for row_index := 0; row_index < len(board); row_index += last_row {
 		for col_index := 0; col_index < len(board[0]); col_index++ {
 			cell := board[row_index][col_index]
@@ -42,8 +50,10 @@ func Solve(board [][]byte) {
 		}
 	}
 
-	// Capture all cells not on the boarder and not in a region that touches the
-	// boarder.
+	/*
+	Capture all cells not on the boarder and not in a region that touches the
+	boarder.
+	*/
 	for row_index := 1; row_index < last_row; row_index++ {
 		for col_index := 1; col_index < last_col; col_index++ {
 			cell := board[row_index][col_index]
@@ -61,19 +71,19 @@ func solveRegion(board [][]byte, row, col int, cell_is_free map[[2]int]bool) {
 	_, exists := cell_is_free[position]
 	if !exists && board[row][col] == byte('O') {
 		cell_is_free[position] = true
-		// Up
+		// Check next cell up.
 		if row-1 >= 0 {
 			solveRegion(board, row-1, col, cell_is_free)
 		}
-		// Down
+		// Check next cell down.
 		if row+1 < len(board) {
 			solveRegion(board, row+1, col, cell_is_free)
 		}
-		// Left
+		// Check next cell left.
 		if col-1 >= 0 {
 			solveRegion(board, row, col-1, cell_is_free)
 		}
-		// Right
+		// Check next cell right.
 		if col+1 < len(board[0]) {
 			solveRegion(board, row, col+1, cell_is_free)
 		}

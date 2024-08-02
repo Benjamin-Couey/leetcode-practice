@@ -5,6 +5,8 @@ import (
 	"leetcode/utils"
 )
 
+/* TOOD: Consider moving to utils since there isn't a Leetcode problem for
+is height balanced. */
 func IsHeightBalanced(root *utils.TreeNode) bool {
 
 	if root == nil {

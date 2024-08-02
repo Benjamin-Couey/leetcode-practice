@@ -1,15 +1,23 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/merge-two-sorted-lists/description/
+*/
 package merge_two_sorted_lists
 
 import (
 	"leetcode/utils"
 )
 
-/* Assumes that:
-Two nodes with the same value from different original lists are interchangeable
-in the merged list.
-The number of nodes in both lists is in the range [0, 50].
--100 <= Node.val <= 100
-Both list1 and list2 are sorted in non-decreasing order. */
+/*
+MergeTwoLists merges the linked lists starting at list1 and list2 and returns
+the resulting sorted linked list.
+MergeTwoLists assumes that:
+two nodes with the same value from different original lists are interchangeable
+in the merged list,
+the number of nodes in both lists is in the range [0, 50],
+-100 <= Node.val <= 10,
+and both list1 and list2 are sorted in non-decreasing order.
+*/
 func MergeTwoLists(list1 *utils.ListNode, list2 *utils.ListNode) *utils.ListNode {
 
 	var head *utils.ListNode = nil

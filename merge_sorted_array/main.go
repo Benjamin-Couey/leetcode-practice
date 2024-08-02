@@ -1,5 +1,19 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/merge-sorted-array/description/
+*/
 package merge_sorted_array
 
+/*
+Merge merges nums2 into nums1 while maintaining non-decreasing order.
+Merge assumes that:
+nums1 and nums2 are sorted in non-decreasing order,
+nums1.length == m + n,
+nums2.length == n,
+0 <= m, n <= 200,
+1 <= m + n <= 200,
+and -10^9 <= nums1[i], nums2[j] <= 10^9.
+*/
 func Merge(nums1 []int, m int, nums2 []int, n int) {
 	if n < 1 {
 		return

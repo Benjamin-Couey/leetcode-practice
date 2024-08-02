@@ -1,9 +1,14 @@
+/* Package includes implementation and tests for problem described at
+https://leetcode.com/problems/jump-game-ii/description/ */
 package jump_game_ii
 
-/* Assumes that:
-1 <= nums.length <= 104
-0 <= nums[i] <= 1000
-It's guaranteed that you can reach nums[n - 1]. */
+/* Jump returns the minimum number of jumps needed to reach the last index to
+reach the last index of nums. nums[i] represents you maximum jump length at that
+position. You start at nums[0].
+Jump assumes that:
+1 <= nums.length <= 104,
+0 <= nums[i] <= 1000,
+and it's guaranteed that you can reach nums[n - 1]. */
 func Jump(nums []int) int {
 
 	jumps := 0

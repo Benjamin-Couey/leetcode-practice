@@ -1,13 +1,22 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/insert-interval/description/
+*/
 package insert_interval
 
-/* Assumes that:
-0 <= intervals.length <= 10^4
-intervals[i].length == 2
-0 <= starti <= endi <= 10^5
-intervals is sorted by starti in ascending order.
-intervals contains no overlapping intervals
-newInterval.length == 2
-0 <= start <= end <= 10^5 */
+/*
+Insert inserts newIntervals into intervals such that intervals is still sorted
+in ascending order by starti and still does not have any overlapping intervals,
+merging overlapping intervals if necessary. Returns the resulting slice of intervals.
+Insert assumes that:
+0 <= intervals.length <= 10^4,
+intervals[i].length == 2,
+0 <= starti <= endi <= 10^5,
+intervals is sorted by starti in ascending order,
+intervals contains no overlapping intervals,
+newInterval.length == 2,
+0 <= start <= end <= 10^5.
+*/
 func Insert(intervals [][]int, newInterval []int) [][]int {
 
 	new_intervals := make([][]int, 0)

@@ -1,14 +1,26 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/h-index/description/
+*/
 package h_index
 
 import (
 	"sort"
 )
 
-/* O(n^2log(n)) time complexity and O(n) space complexity ( O(1) if you don't
-care about mutating the original array ).
-Assumes that:
-1 <= citations.length <= 5000
-0 <= citations[i] <= 1000 */
+/*
+HIndex returns the h-index of a researcher defined by citations. The h-index
+is the maximum value of h such that a researcher has published at least h papers
+that have each been cited at least h times. citations is an exhaustive list of the
+number of times each of a researcher's papers has been cited.
+HIndex assumes that:
+1 <= citations.length <= 5000,
+and 0 <= citations[i] <= 1000.
+
+HIndex runs in O(n^2log(n)) time complexity and O(n) space complexity. It could
+be modified to use O(1) space complexity by mutating the original array, but this
+is an undesireable side effect.
+*/
 func HIndex(citations []int) int {
 	// Make a local copy to avoid mutating the original slice
 	local_citations := make([]int, len(citations))
@@ -24,8 +36,10 @@ func HIndex(citations []int) int {
 	return h_index
 }
 
-/* O(n^2) time complexity and O(n) space complexity.
-Trades space for speed.*/
+/*
+AltHIndex is an alternative implementation of HIndex which runs in O(n^2)
+time complexity and O(n) space complexity, trading space for time.
+*/
 func AltHIndex(citations []int) int {
 	counts := make([]int, 1001)
 	max_num := 0

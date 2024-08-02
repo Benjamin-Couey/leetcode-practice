@@ -1,11 +1,22 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/average-of-levels-in-binary-tree/description/
+*/
 package average_of_levels_in_binary_tree
 
 import (
 	"leetcode/utils"
 )
 
+/*
+AverageOfLevels returns a slice of the average value of each level of tree
+starting at root.
+AverageOfLevels assumes that:
+the number of nodes in the tree is in the range [1, 104],
+and -2^31 <= TreeNode.val <= 2^31 - 1.
+*/
 func AverageOfLevels(root *utils.TreeNode) []float64 {
-	sums, counts := recursiveAverageOfLevels(root, []int{0}, []int{0}, 0)
+	sums, counts := recursiveSumOfLevels(root, []int{0}, []int{0}, 0)
 
 	averages := []float64{}
 
@@ -17,7 +28,7 @@ func AverageOfLevels(root *utils.TreeNode) []float64 {
 	return averages
 }
 
-func recursiveAverageOfLevels(root *utils.TreeNode, sums []int, counts []int, index int) ([]int, []int) {
+func recursiveSumOfLevels(root *utils.TreeNode, sums []int, counts []int, index int) ([]int, []int) {
 	if root == nil {
 		return sums, counts
 	}

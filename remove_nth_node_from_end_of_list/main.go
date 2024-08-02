@@ -1,9 +1,22 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+*/
 package remove_nth_node_from_end_of_list
 
 import (
 	"leetcode/utils"
 )
 
+/*
+RemoveNthFromEnd returns the head of the linked list head after removing the
+nth node from the end.
+RemoveNthFromEnd assumes that:
+the number of nodes in the list is sz,
+1 <= sz <= 30,
+0 <= ListNode.val <= 100,
+and 1 <= n <= sz.
+*/
 func RemoveNthFromEnd(head *utils.ListNode, n int) *utils.ListNode {
 
 	pointer_list := make([]*utils.ListNode, 0)

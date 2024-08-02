@@ -1,13 +1,21 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/path-sum/description/
+*/
 package path_sum
 
 import (
 	"leetcode/utils"
 )
 
-/* Assumes that:
-The number of nodes in the tree is in the range [0, 5000].
--1000 <= Node.Val <= 1000 and Node.Val != 0
--1000 <= targetSum <= 1000 */
+/*
+HasPathSum reports whether the tree starting at root has a root to leaf sum
+equally targetSum.
+HasPathSum Assumes that:
+The number of nodes in the tree is in the range [0, 5000],
+-1000 <= Node.Val <= 1000 and Node.Val != 0,
+and -1000 <= targetSum <= 1000.
+*/
 func HasPathSum(root *utils.TreeNode, targetSum int) bool {
 	if root == nil {
 		return false

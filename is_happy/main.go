@@ -1,10 +1,17 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/happy-number/description/
+*/
 package is_happy
 
 import (
 	"math"
 )
 
-/* A happy number is a number defined by the following process:
+/*
+IsHappy reports whether n is happy.
+
+A happy number is a number defined by the following process:
 Starting with any positive integer, replace the number by the sum of the squares
 of its digits.
 
@@ -13,11 +20,12 @@ endlessly in a cycle which does not include 1.
 
 Those numbers for which this process ends in 1 are happy.
 
-The number will not increase forever, because for a set of n digits, n*81 while
-you need at least 10^(n-1) to not decrease n. Since the latter scales faster,
-the sets for n = 4 for higher always decrease.
+The number will not increase forever, because for a set of n digits, the can sum
+to at most n*81 while you need at least 10^(n-1) to not decrease n. Since the
+latter scales faster, the sets for n = 4 or higher always decrease.
 
-Assumes that 1 <= n <= 2^31 - 1 */
+IsHappy assumes that 1 <= n <= 2^31 - 1.
+*/
 func IsHappy(n int) bool {
 	encountered_nums := make(map[int]bool)
 

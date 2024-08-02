@@ -1,22 +1,31 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
+*/
 package reverse_polish_notation
 
 import (
 	"fmt"
 )
 
+// The string representations of the operators which EvalRPN supports.
 const ADD string = "+"
 const SUBTRACT string = "-"
 const MULTIPLY string = "*"
 const DIVIDE string = "/"
 
-/* Assumes that:
-Each operand may be an integer or another expression.
-The division between two integers always truncates toward zero.
-There will not be any division by zero.
-The input represents a valid arithmetic expression in a reverse polish notation.
-The answer and all the intermediate calculations can be represented in a 32-bit integer.
-1 <= tokens.length <= 10^4
-tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200]. */
+/*
+EvalRPN returns the integer that results from evaluating the arithmetic expression
+tokens.
+EvalRPN assumes that:
+each operand may be an integer or another expression,
+the division between two integers always truncates toward zero,
+there will not be any division by zero,
+the input represents a valid arithmetic expression in a reverse polish notation,
+the answer and all the intermediate calculations can be represented in a 32-bit integer,
+1 <= tokens.length <= 10^4,
+and tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200].
+*/
 func EvalRPN(tokens []string) int {
 
 	stack := make([]string, 0)

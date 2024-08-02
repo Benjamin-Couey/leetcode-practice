@@ -1,15 +1,27 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/spiral-matrix/description/
+*/
 package spiral_matrix
 
+/*
+Constants to give names to integers SpiralOrder uses to track the direction it
+is traversing the matrix.
+*/
 const RIGHT int = 0
 const DOWN int = 1
 const LEFT int = 2
 const UP int = 3
 
-/* Assumes that:
-m == matrix.length
-n == matrix[i].length
-1 <= m, n <= 10
--100 <= matrix[i][j] <= 100 */
+/*
+SpiralOrder traverses matrix in clockwise spiral order and returns a slice of
+the elements encountered.
+SpiralOrder assumes that:
+m == matrix.length,
+n == matrix[i].length,
+1 <= m, n <= 10,
+and -100 <= matrix[i][j] <= 100.
+*/
 func SpiralOrder(matrix [][]int) []int {
 	spiral_order := make([]int, 0)
 

@@ -1,16 +1,23 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/word-pattern/description/
+*/
 package word_pattern
 
 import (
 	"strings"
 )
 
-/* Assumes that:
-1 <= pattern.length <= 300
-pattern contains only lower-case English letters.
-1 <= s.length <= 3000
-s contains only lowercase English letters and spaces ' '.
-s does not contain any leading or trailing spaces.
-All the words in s are separated by a single space. */
+/*
+WordPattern reports whether the words in s follows the pattern described in pattern.
+WordPattern assumes that:
+1 <= pattern.length <= 300,
+pattern contains only lower-case English letters,
+1 <= s.length <= 3000,
+s contains only lowercase English letters and spaces ' ',
+s does not contain any leading or trailing spaces,
+and all the words in s are separated by a single space.
+*/
 func WordPattern(pattern string, s string) bool {
 
 	words := strings.Split(s, " ")

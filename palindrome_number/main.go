@@ -1,9 +1,17 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/palindrome-number/description/
+*/
 package palindrome_number
 
 import (
 	"math"
 )
 
+/*
+IsPalindrome reports whether x is a palindrome.
+IsPalindrome assumes that -2^31 <= x <= 2^31 - 1.
+*/
 func IsPalindrome(x int) bool {
 
 	if x < 0 {

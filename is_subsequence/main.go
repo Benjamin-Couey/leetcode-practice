@@ -1,9 +1,16 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/is-subsequence/description/
+*/
 package is_subsequence
 
-/* Assumes that:
-0 <= s.length <= 100
-0 <= t.length <= 104
-s and t consist only of lowercase English letters. */
+/*
+IsSubsequence reports whether s is a subsequence of t.
+IsSubsequence assumes that:
+0 <= s.length <= 100,
+0 <= t.length <= 104,
+and s and t consist only of lowercase English letters.
+*/
 func IsSubsequence(s string, t string) bool {
 
 	rune_s := []rune(s)

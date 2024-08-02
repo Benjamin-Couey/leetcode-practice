@@ -1,22 +1,31 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/
+*/
 package minimum_absolute_difference_in_BST
 
 import (
 	"leetcode/utils"
 )
 
+// The maximum difference between values in the tree.
 const MAX_VAL int = 100000
 
-/* Assumes that:
-The number of nodes in the tree is in the range [2, 10^4].
-1 <= Node.val <= 10^5 */
+/*
+GetMinimumDifference returns the minimum absolute difference between any two nodes
+in the tree starting at root.
+GetMinimumDifference assumes that:
+the number of nodes in the tree is in the range [2, 10^4],
+and 1 <= TreeNode.val <= 10^5.
+*/
 func GetMinimumDifference(root *utils.TreeNode) int {
 	return recursiveGetMinimumDifference(root, root)
 }
 
-/* Traverse the tree and pass each node to recursiveCompareToTree. Return the
-minimum of the differences returned.
-root - Root of the tree being traversed.
-cursor - Current node in the traversal. */
+/*
+recursiveGetMinimumDifference traverses the tree and passes each node to
+recursiveCompareToTree, then returns the minimum of the returned differences.
+*/
 func recursiveGetMinimumDifference(root *utils.TreeNode, cursor *utils.TreeNode) int {
 	if cursor == nil {
 		return MAX_VAL
@@ -33,10 +42,10 @@ func recursiveGetMinimumDifference(root *utils.TreeNode, cursor *utils.TreeNode)
 	return diff
 }
 
-/* Given the root of a tree and a node, calculate the minimum difference between
-that node and all other nodes. Return the minimum of those differences.
-cursor - Current node in the traversal.
-node - The node being compared. */
+/*
+recursiveCompareToTree returns the minimum distance between a given node
+and all other nodes in the tree.
+*/
 func recursiveCompareToTree(cursor *utils.TreeNode, node *utils.TreeNode) int {
 	diff := MAX_VAL
 	if cursor == nil {

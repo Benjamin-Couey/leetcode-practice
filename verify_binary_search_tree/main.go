@@ -1,17 +1,23 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/validate-binary-search-tree/description/
+*/
 package verify_binary_search_tree
 
 import (
 	"leetcode/utils"
 )
 
-/* Assumes that:
-The number of nodes in the tree is in the range [1, 104].
--2^31 <= Node.val <= 2^31 - 1
-
-A valid BST is defined as follows:
-The left subtree of a node contains only nodes with values less than the node's value.
-The right subtree of a node contains only nodes with values greater than the node's value.
-Both the left and right subtrees must also be binary search trees. */
+/*
+IsValidBST reports whether the tree starting at root is a valid binary search
+tree. A valid BST is defined as follows:
+the left subtree of a node contains only nodes with values less than the node's value,
+the right subtree of a node contains only nodes with values greater than the node's value,
+and both the left and right subtrees must also be binary search trees.
+IsValidBST assumes that:
+the number of nodes in the tree is in the range [1, 10^4],
+and -2^31 <= Node.val <= 2^31 - 1.
+*/
 func IsValidBST(root *utils.TreeNode) bool {
 	if root == nil {
 		return true
@@ -48,9 +54,10 @@ func subtreeGreaterThan(root *utils.TreeNode, val int) bool {
 	}
 }
 
-/* Assumes that:
-The number of nodes in the tree is in the range [1, 104].
--2^31 <= Node.val <= 2^31 - 1 and Node.val != 0. */
+/*
+AltIsValidBST is an alternative implementation of IsValidBST which makes
+the additional assumption that Node.val != 0.
+*/
 func AltIsValidBST(root *utils.TreeNode) bool {
 	return recAltIsValidBST(root, 0, 0)
 }

@@ -1,14 +1,22 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/summary-ranges/description/
+*/
 package summary_ranges
 
 import (
 	"fmt"
 )
 
-/* Assumes that:
-0 <= nums.length <= 20
--2^31 <= nums[i] <= 2^31 - 1
-All the values of nums are unique.
-nums is sorted in ascending order. */
+/*
+SummaryRanges returns the smallest sorted list of ranges, expressed as strings,
+that cover all elements of nums.
+SummaryRanges assumes that:
+0 <= nums.length <= 20,
+-2^31 <= nums[i] <= 2^31 - 1,
+all the values of nums are unique,
+nums is sorted in ascending order.
+*/
 func SummaryRanges(nums []int) []string {
 
 	if len(nums) < 1 {

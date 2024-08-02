@@ -1,9 +1,17 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/add-binary/description/
+*/
 package add_binary
 
-/* Assumes that:
-1 <= a.length, b.length <= 10^4
-a and b consist only of '0' or '1' characters.
-Each string does not contain leading zeros except for the zero itself. */
+/*
+AddBinary returns a string representation of bits that is the binary sum of the
+string representation of bits a and b.
+AddBinary assumes that:
+1 <= a.length, b.length <= 10^4,
+a and b consist only of '0' or '1' characters,
+and each string does not contain leading zeros except for zero itself.
+*/
 func AddBinary(a string, b string) string {
 	rune_a := []rune(a)
 	rune_b := []rune(b)

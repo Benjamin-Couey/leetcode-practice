@@ -1,9 +1,17 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/merge-intervals/description/
+*/
 package merge_intervals
 
-/* Assumes that:
-1 <= intervals.length <= 10^4
-intervals[i].length == 2
-0 <= starti <= endi <= 10^4 */
+/*
+Merge merges all overlapping intervals in intervals and returns the resulting
+slice of non-overlapping intervals.
+Merge assumes that:
+1 <= intervals.length <= 10^4,
+intervals[i].length == 2,
+and 0 <= starti <= endi <= 10^4.
+*/
 func Merge(intervals [][]int) [][]int {
 
 	merged_intervals := make([][]int, 0)

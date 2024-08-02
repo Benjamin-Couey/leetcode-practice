@@ -1,8 +1,15 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/valid-anagram/description/
+*/
 package valid_anagram
 
-/* Assumes that:
-1 <= s.length, t.length <= 5 * 104
-s and t consist of lowercase English letters. */
+/*
+IsAnagram reports whether t is an anagram of s.
+IsAnagram assumes that:
+1 <= s.length, t.length <= 5 * 104,
+and s and t consist of lowercase English letters.
+*/
 func IsAnagram(s string, t string) bool {
 	rune_s := []rune(s)
 	rune_t := []rune(t)

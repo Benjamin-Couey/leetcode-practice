@@ -1,9 +1,17 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/length-of-last-word/description/
+*/
 package length_of_last_word
 
-/* Assumes that:
-1 <= s.length <= 104
-s consists of only English letters and spaces ' '.
-There will be at least one word in s. */
+/*
+LengthOfLastWord returns the length of the last word in s.
+LengthOfLastWord assumes that:
+1 <= s.length <= 10^4,
+s consists of only English letters and spaces ' ',
+a word is a maximal substring containing only non-space characters,
+and there will be at least one word in s.
+*/
 func LengthOfLastWord(s string) int {
 
 	length_of_current_word := 0

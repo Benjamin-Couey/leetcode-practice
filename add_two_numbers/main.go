@@ -1,13 +1,25 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/add-two-numbers/description/
+*/
 package add_two_numbers
 
 import (
 	"leetcode/utils"
 )
 
-/* Assumes that:
-The number of nodes in each linked list is in the range [1, 100].
-0 <= Node.val <= 9
-The list represents a number that does not have leading zeros. */
+/*
+AddTwoNumbers returns Linked list representation of sum of the linked lists l1
+and l2.
+AddTwoNumbers assumes that:
+l1 and l2 are linked lists representing numbers,
+the digits are stored in reverse order,
+each node contains a single digit,
+the number of nodes in each linked list is in the range [1, 100],
+0 <= ListNode.val <= 9,
+and the linked lists represent numbers that do not have leading zeros except for
+zero itself.
+*/
 func AddTwoNumbers(l1 *utils.ListNode, l2 *utils.ListNode) *utils.ListNode {
 	var return_list utils.ListNode
 	var return_cursor *utils.ListNode

@@ -1,11 +1,19 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/reverse-words-in-a-string/description/
+*/
 package reverse_words_in_a_string
 
-/* Assume that:
-1 <= s.length <= 104
-s contains English letters (upper-case and lower-case), digits, and spaces ' '.
-A word is defined as a sequence of non-space characters.
-The words in s will be separated by at least one space.
-There is at least one word in s. */
+/*
+ReverseWords reverses the order of the words in s and returns the resulting
+string.
+ReverseWords assumes that:
+1 <= s.length <= 104,
+s contains English letters (upper-case and lower-case), digits, and spaces ' ',
+a word is defined as a sequence of non-space characters,
+the words in s will be separated by at least one space,
+and there is at least one word in s.
+*/
 func ReverseWords(s string) string {
 	rune_s := []rune(s)
 	return_runes := make([]rune, 0)

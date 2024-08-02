@@ -1,8 +1,15 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/
+*/
 package first_occurrence_in_string
 
-/*Assumes that:
-1 <= haystack.length, needle.length <= 10^4
-haystack and needle consist of only lowercase English characters.
+/*
+StrStr returns the index of the first occurrence of the substring needle in
+the string haystack. Returns -1 if needle is not present in haystack.
+StrStr assumes that:
+1 <= haystack.length, needle.length <= 10^4,
+and haystack and needle consist of only lowercase English characters.
 */
 func StrStr(haystack string, needle string) int {
 	rune_haystack := []rune(haystack)

@@ -1,9 +1,22 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/zigzag-conversion/description/
+*/
 package zigzag_conversion
 
-/* Assumes that:
-1 <= s.length <= 1000
-s consists of English letters (lower-case and upper-case), ',' and '.'.
-1 <= numRows <= 1000 */
+/*
+Convert returns the string s written in a zigzag pattern with numRows rows.
+For example, if s="PAYPALISHIRING" and numRows=3, the zigzag would be written
+as:
+P   A   H   N
+A P L S I I G
+Y   I   R
+then read line by line and returned as: "PAHNAPLSIIGYIR".
+Convert assumes that:
+1 <= s.length <= 1000,
+s consists of English letters (lower-case and upper-case), ',' and '.',
+and 1 <= numRows <= 1000.
+*/
 func Convert(s string, numRows int) string {
 
 	rune_s := []rune(s)

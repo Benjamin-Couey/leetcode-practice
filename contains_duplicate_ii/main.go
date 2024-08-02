@@ -1,10 +1,17 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/contains-duplicate-ii/description/
+*/
 package contains_duplicate_ii
 
-/* Assumes that:
-
-1 <= nums.length <= 10^5
--10^9 <= nums[i] <= 10^9
-0 <= k <= 10^5 */
+/*
+ContainsNearbyDuplicate reports whether there are two distinct indices i and j
+in nums such that nums[i] == nums[j] and abs(i - j) <= k.
+ContainsNearbyDuplicate assumes that:
+1 <= nums.length <= 10^5,
+-10^9 <= nums[i] <= 10^9,
+and 0 <= k <= 10^5.
+*/
 func ContainsNearbyDuplicate(nums []int, k int) bool {
 
 	value_to_last_index := make(map[int]int)

@@ -1,14 +1,20 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/reverse-linked-list-ii/description/
+*/
 package reverse_linked_list_ii
 
 import (
 	"leetcode/utils"
 )
 
-/* Assumes that:
-The number of nodes in the list is n.
-1 <= n <= 500.
--500 <= Node.val <= 500.
-1 <= left <= right <= n. */
+/* ReverseBetween reverses the nodes in the linked list starting at head from
+the position left to right and returns the head of the resulting linked list.
+ReverseBetween assumes that:
+the number of nodes in the list is n,
+1 <= n <= 500,
+-500 <= Node.val <= 500,
+and 1 <= left <= right <= n. */
 func ReverseBetween(head *utils.ListNode, left int, right int) *utils.ListNode {
 	var cursor *utils.ListNode = nil
 	var return_head *utils.ListNode = nil

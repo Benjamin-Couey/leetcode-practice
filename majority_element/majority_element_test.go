@@ -27,11 +27,21 @@ func TestMerge(t *testing.T) {
 			} else {
 				message = "no error message"
 			}
-			t.Errorf("MajorityElement: %v, want %v", error, message)
+			t.Errorf(
+				"MajorityElement: %v returned error message %v, want %v",
+				testcase.nums1,
+				error,
+				message,
+			)
 		}
 
 		if answer != testcase.solution {
-			t.Errorf("MajorityElement: %v, want %v", answer, testcase.solution)
+			t.Errorf(
+				"MajorityElement: %v returned %v, want %v",
+				testcase.nums1,
+				answer,
+				testcase.solution,
+			)
 		}
 	}
 }

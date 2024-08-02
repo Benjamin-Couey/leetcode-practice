@@ -1,14 +1,23 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/group-anagrams/description/
+*/
 package group_anagrams
 
 import (
 	"leetcode/valid_anagram"
 )
 
-/* Assumes that:
-The answer may be returned in any order.
-1 <= strs.length <= 10^4
-0 <= strs[i].length <= 100
-strs[i] consists of lowercase English letters. */
+/*
+GroupAnagrams groups strings in strs that are anagrams of one another and
+returns a slice of these groups.
+GroupAnagrams assumes that:
+anagrams use all letters exactly once,
+the answer may be returned in any order,
+1 <= strs.length <= 10^4,
+0 <= strs[i].length <= 100,
+and strs[i] consists of lowercase English letters.
+*/
 func GroupAnagrams(strs []string) [][]string {
 	grouped_anagrams := make([][]string, 0)
 

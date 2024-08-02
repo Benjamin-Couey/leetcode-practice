@@ -1,10 +1,18 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/search-insert-position/description/
+*/
 package search_insert_position
 
-/* Assumes that:
-1 <= nums.length <= 10^4
--10^4 <= nums[i] <= 10^4
-nums contains distinct values sorted in ascending order.
--10^4 <= target <= 10^4 */
+/*
+SearchInsert returns the index of target in nums. If target isn't in nums, it
+instead returns the index where target would be inserted in order.
+SearchInsert Assumes that:
+1 <= nums.length <= 10^4,
+-10^4 <= nums[i] <= 10^4,
+nums contains distinct values sorted in ascending order,
+and -10^4 <= target <= 10^4.
+*/
 func SearchInsert(nums []int, target int) int {
 
 	if len(nums) < 1 {

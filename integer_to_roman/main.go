@@ -1,9 +1,14 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/integer-to-roman/description/
+*/
 package integer_to_roman
 
 import (
 	"strings"
 )
 
+// Map that converts integers to Roman numerals.
 var value_to_string = map[int]string{
 	1000: "M",
 	500:  "D",
@@ -14,18 +19,22 @@ var value_to_string = map[int]string{
 	1:    "I",
 }
 
-var values_to_check = []int{
+// Powers of ten used by IntToRoman to deconstruct num.
+var powers_of_ten = []int{
 	1000,
 	100,
 	10,
 	1,
 }
 
-// Assumes that 1 <= num <= 3999.
+/*
+IntToRoman returns Roman numeral representation of num.
+IntToRoman assumes that 1 <= num <= 3999.
+*/
 func IntToRoman(num int) string {
 	roman_num := ""
 
-	for _, value := range values_to_check {
+	for _, value := range powers_of_ten {
 		quotient := num / value
 
 		if quotient < 5 {

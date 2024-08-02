@@ -1,11 +1,19 @@
+/*
+Package includes implementation and tests for problem described at
+https://leetcode.com/problems/number-of-islands/description/
+*/
 package number_of_islands
 
-/* Assumes that:
-All four edges of the grid are all surrounded by water.
-m == grid.length
-n == grid[i].length
-1 <= m, n <= 300
-grid[i][j] is '0' or '1'. */
+/*
+NumIslands returns the number of islands in grid. An island is a number of '1'
+bytes (land) connected horizontally and verticlaly and surrounded by '0' bytes
+(water).
+NumIslands assumes that:
+all four edges of grid are surrounded by water,
+m == grid.length,
+n == grid[i].length,
+1 <= m, n <= 300,
+and grid[i][j] is '0' or '1'. */
 func NumIslands(grid [][]byte) int {
 
 	islands := 0
@@ -16,7 +24,7 @@ func NumIslands(grid [][]byte) int {
 			_, exists := encountered_cells[[2]int{row_index, col_index}]
 
 			if !exists && cell == byte('1') {
-				// Recursively encounter all cells in the new island
+				// Recursively encounter all cells in the new island.
 				encounterIsland(grid, row_index, col_index, encountered_cells)
 				islands++
 			}
