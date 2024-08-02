@@ -16,17 +16,28 @@ the right subtree of a node contains only nodes with values greater than the nod
 and both the left and right subtrees must also be binary search trees.
 IsValidBST assumes that:
 the number of nodes in the tree is in the range [1, 10^4],
+an empty tree is not a valid BST,
 and -2^31 <= Node.val <= 2^31 - 1.
 */
 func IsValidBST(root *utils.TreeNode) bool {
 	if root == nil {
-		return true
+		return false
 	}
 
 	if !subtreeLessThan(root.Left, root.Val) || !subtreeGreaterThan(root.Right, root.Val) {
 		return false
 	} else {
-		return IsValidBST(root.Left) && IsValidBST(root.Right)
+		left_valid := true
+		if root.Left != nil {
+			left_valid = IsValidBST(root.Left)
+		}
+
+		right_valid := true
+		if root.Right != nil {
+			right_valid = IsValidBST(root.Right)
+		}
+
+		return left_valid && right_valid
 	}
 }
 
@@ -75,15 +86,15 @@ func recAltIsValidBST(root *utils.TreeNode, lower_bound int, upper_bound int) bo
 		return false
 	}
 
-	left_good := true
+	left_valid := true
 	if root.Left != nil {
-		left_good = recAltIsValidBST(root.Left, lower_bound, root.Val)
+		left_valid = recAltIsValidBST(root.Left, lower_bound, root.Val)
 	}
 
-	right_good := true
+	right_valid := true
 	if root.Right != nil {
-		right_good = recAltIsValidBST(root.Right, root.Val, upper_bound)
+		right_valid = recAltIsValidBST(root.Right, root.Val, upper_bound)
 	}
 
-	return left_good && right_good
+	return left_valid && right_valid
 }
