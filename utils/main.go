@@ -1,3 +1,7 @@
+/*
+Package includes definitions of more complicated data types and utility functions
+which are used across multiple leetcode problems.
+*/
 package utils
 
 import (
@@ -6,26 +10,33 @@ import (
 	"sort"
 )
 
+// TreeNode is a node of a binary tree that stores integers.
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
 }
 
+// ListNode is a node of a singly linked list that stores integers.
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
-/* Assumes that:
-Node.val is unique for each node. Node.val is also the unique index of the node.
-There are no repeated edges and no self-loops in the graph.
-The Graph is connected and all nodes can be visited starting from the given node. */
+/*
+GraphNode is a node in a non-directed graph.
+GraphNode assumes that:
+Val is unique for each node,
+Val is also the unique index of the node,
+there are no repeated edges and no self-loops in the graph,
+and the Graph is connected and all nodes can be visited starting from the given node.
+*/
 type GraphNode struct {
 	Val       int
 	Neighbors []*GraphNode
 }
 
+// SliceEqual reports whether a and b are equivalent.
 func SliceEqual[V comparable](a, b []V) bool {
 	if len(a) != len(b) {
 		return false
@@ -38,6 +49,7 @@ func SliceEqual[V comparable](a, b []V) bool {
 	return true
 }
 
+// MatrixEqual reports whether a and b are equivalent.
 func MatrixEqual[V comparable](a, b [][]V) bool {
 	if len(a) != len(b) {
 		return false
@@ -55,6 +67,10 @@ func MatrixEqual[V comparable](a, b [][]V) bool {
 	return true
 }
 
+/*
+SliceEqualAnyOrder reports whether a and b contain the same elements,
+regardless of order.
+*/
 func SliceEqualAnyOrder[V comparable](a, b []V) bool {
 	if len(a) != len(b) {
 		return false
@@ -80,6 +96,10 @@ func SliceEqualAnyOrder[V comparable](a, b []V) bool {
 	return true
 }
 
+/*
+MatrixEqualAnyOrder reports whether a and b contain the same elements,
+regardless of order.
+*/
 func MatrixEqualAnyOrder[V comparable](a, b [][]V) bool {
 	if len(a) != len(b) {
 		return false
@@ -114,6 +134,7 @@ func MatrixEqualAnyOrder[V comparable](a, b [][]V) bool {
 	return true
 }
 
+// SortFirstKInts modifies x, sorting the first k elements in increasing order.
 func SortFirstKInts(x []int, k int) {
 	if k > len(x) || k < 0 {
 		return
@@ -124,6 +145,7 @@ func SortFirstKInts(x []int, k int) {
 	x = append(first_k, rest...)
 }
 
+// IsSameLinkedList reports whether p and q are equivalent.
 func IsSameLinkedList(p *ListNode, q *ListNode) bool {
 
 	encountered_p_nodes := make(map[*ListNode]bool)
@@ -159,6 +181,10 @@ func IsSameLinkedList(p *ListNode, q *ListNode) bool {
 	}
 }
 
+/*
+SliceToLinkedList returns the head of a linked list that has ListNodes with the
+same values and same order as x.
+*/
 func SliceToLinkedList(x []int) *ListNode {
 	if len(x) < 1 {
 		return nil
@@ -175,6 +201,11 @@ func SliceToLinkedList(x []int) *ListNode {
 	return &head
 }
 
+/*
+SliceToLinkedList returns the head of a linked list that has ListNodes with the
+same values and same order as x. The last node of this linked list points to the
+node corresponding to x[i], forming a cycle.
+*/
 func SliceToLinkedListWithCycle(x []int, y int) *ListNode {
 	if len(x) < 1 {
 		return nil
@@ -203,9 +234,13 @@ func SliceToLinkedListWithCycle(x []int, y int) *ListNode {
 	return head
 }
 
-/* Will stop upon encountering a cycle. */
+/*
+LinkedListToSlice returns a slice with the same values and order as the linked
+list starting at head. LinkedListToSlice will stop upon encountering a cycle.
+*/
 func LinkedListToSlice(head *ListNode) []int {
 	return_slice := make([]int, 0)
+	// Track encountered nodes so we can stop upon encountering a cycle.
 	encountered_nodes := make(map[*ListNode]bool)
 	for head != nil && !encountered_nodes[head] {
 		return_slice = append(return_slice, head.Val)
@@ -215,6 +250,11 @@ func LinkedListToSlice(head *ListNode) []int {
 	return return_slice
 }
 
+/*
+TraverseAndPrintTree traverses the the tree starting and node and print the value
+and value of the children of each node. Uses 0 to indicate the lack of a child.
+TraverseAndPrintTree assumes that nodes in the tree do not contian the value 0.
+*/
 func TraverseAndPrintTree(node *TreeNode) {
 	if node == nil {
 		return
@@ -237,6 +277,7 @@ func TraverseAndPrintTree(node *TreeNode) {
 	TraverseAndPrintTree(node.Right)
 }
 
+// IsSameTree reports whether p and q are equivalent.
 func IsSameTree(p *TreeNode, q *TreeNode) bool {
 	if p == nil || q == nil {
 		if p == q {
@@ -253,9 +294,12 @@ func IsSameTree(p *TreeNode, q *TreeNode) bool {
 	return IsSameTree(p.Left, q.Left) && IsSameTree(p.Right, q.Right)
 }
 
-/* Given a level order list of integer values, builds a tree with those values.
-Node which are nil should be indicated with a 0. Trailings 0s may be
-excluded. Assumes that nodes in the tree do not contain the value 0. */
+/*
+LevelOrderToTree returns the root of a tree that contains the values of the
+level order slice x. Nodes while are nil should be indicated in x with a 0.
+Trailing 0s may be excluded.
+LevelOrderToTree assumes that nodes in the tree do not contian the value 0.
+*/
 func LevelOrderToTree(x []int) *TreeNode {
 	if len(x) < 1 {
 		return nil
@@ -281,14 +325,17 @@ func recursiveLevelOrderToTree(x []int, index int) *TreeNode {
 	return &root
 }
 
+// NilInt is an integer which can contain nil instead of an integer value.
 type NilInt struct {
 	value int
 	null  bool
 }
 
-// Have NilInt implicitly implement the Value interface. interface{} specifies
-// that the function returns an interface. In order to get an int, you will
-// need to use a type assertion..
+/*
+Value returns the integer or nil stored in n. interface{} specifies that the
+function returns an interface. In order to get an int, a type assertion will be
+necessary.
+*/
 func (n *NilInt) Value() interface{} {
 	if n.null {
 		return nil
@@ -296,14 +343,21 @@ func (n *NilInt) Value() interface{} {
 	return n.value
 }
 
+// NewInt returns a NilInt storing x.
 func NewInt(x int) NilInt {
 	return NilInt{x, false}
 }
 
+// NewInt returns a NilInt storing nil.
 func NewNil() NilInt {
 	return NilInt{0, true}
 }
 
+/*
+NillableLevelOrderToTree returns the root of a tree that contains the values of
+the level order slice x. Nodes while are nil should be indicated in x with a NilInt
+that stores nil. Trailing nil's may be excluded.
+*/
 func NillableLevelOrderToTree(x []NilInt) *TreeNode {
 	if len(x) < 1 {
 		return nil
@@ -315,7 +369,7 @@ func recursiveNillableLevelOrderToTree(x []NilInt, index int) *TreeNode {
 	if index >= len(x) || index < 0 {
 		return nil
 	}
-	// Get the Value interface from the NilInt struct and assert its type is int
+	// Get the Value interface from the NilInt struct and assert its type is int.
 	value, ok := x[index].Value().(int)
 	if !ok {
 		return nil
@@ -331,13 +385,17 @@ func recursiveNillableLevelOrderToTree(x []NilInt, index int) *TreeNode {
 	return &root
 }
 
-/* Given a slice of values and the root of a tree, returns true if every value
-in the slice appears as exactly one node in the tree. */
+/*
+SliceInTree reports whether every value in nums appears as exactly one node in the
+tree starting at root.
+*/
 func SliceInTree(nums []int, root *TreeNode) bool {
 
-	/* recursiveSliceInTree is going to remove values from nums while it runs.
+	/*
+	recursiveSliceInTree is going to remove values from nums while it runs.
 	Since slices are pointers, to avoid whatever slice was passed to SliceInTree
-	also being mutated, we'll make a new slice for this function to use. */
+	also being mutated, we'll make a new slice for this function to use.
+	*/
 	mutable_slice := make([]int, 0)
 	mutable_slice = append(mutable_slice, nums...)
 	if len(mutable_slice) == 0 || root == nil {
@@ -373,6 +431,7 @@ func recursiveSliceInTree(nums []int, root *TreeNode) (bool, []int) {
 	return left_bool && right_bool, nums
 }
 
+// IsSameGraph reports whether p and q are equivalent.
 func IsSameGraph(p *GraphNode, q *GraphNode) bool {
 	if p == nil || q == nil {
 		if p == q {
@@ -384,19 +443,19 @@ func IsSameGraph(p *GraphNode, q *GraphNode) bool {
 
 	p_node_to_connected := make(map[int][]int)
 
-	// Build map of p's nodes to the nodes they connect to
+	// Build a map of p's nodes to the nodes they connect to.
 	buildNodeToConnected(p, p_node_to_connected)
 
 	q_node_to_connected := make(map[int][]int)
 
-	// Build map of q's nodes to the nodes they connect to
+	// Build a map of q's nodes to the nodes they connect to.
 	buildNodeToConnected(q, q_node_to_connected)
 
 	if len(p_node_to_connected) != len(q_node_to_connected) {
 		return false
 	}
 
-	// Compare maps
+	// Compare maps to see if p and q are the same graph.
 	for key, p_connected := range p_node_to_connected {
 		q_connected, exists := q_node_to_connected[key]
 		if !exists {
@@ -430,6 +489,16 @@ func buildNodeToConnected(node *GraphNode, node_to_connected map[int][]int) {
 	}
 }
 
+/*
+AdjacencyToGraph returns a node that is part of the graph defined by the slice
+of adjacency slices list and an error if one occurred. For the adjacency at node[i],
+the corresponding node will be given the id i+1. An error will be returned if
+any Adjacency in list:
+contains a node with an id greater than the length of list (that is, the id of a
+node not defined by list),
+defines a self-loop in the graph,
+or defines a repeated edge in the graph.
+*/
 func AdjacencyToGraph(list [][]int) (*GraphNode, error) {
 
 	if len(list) < 1 {
