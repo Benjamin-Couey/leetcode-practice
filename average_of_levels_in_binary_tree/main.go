@@ -40,8 +40,8 @@ func recursiveSumOfLevels(root *utils.TreeNode, sums []int, counts []int, index 
 		sums = append(sums, 0)
 		counts = append(counts, 0)
 
-		sums, counts = recursiveAverageOfLevels(root.Left, sums, counts, index+1)
-		sums, counts = recursiveAverageOfLevels(root.Right, sums, counts, index+1)
+		sums, counts = recursiveSumOfLevels(root.Left, sums, counts, index+1)
+		sums, counts = recursiveSumOfLevels(root.Right, sums, counts, index+1)
 	}
 
 	return sums, counts
