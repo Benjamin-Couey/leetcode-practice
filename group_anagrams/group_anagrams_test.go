@@ -1,7 +1,6 @@
 package group_anagrams
 
 import (
-	"fmt"
 	"leetcode/utils"
 	"testing"
 )
@@ -24,8 +23,6 @@ func TestGroupAnagrams(t *testing.T) {
 
 	for _, testcase := range testcases {
 		result := GroupAnagrams(testcase.strs)
-
-		fmt.Printf("%v\n", result)
 
 		if !utils.MatrixEqualAnyOrder(result, testcase.solution) {
 			t.Errorf(

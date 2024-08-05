@@ -16,10 +16,7 @@ func TestInvertTree(t *testing.T) {
 
 	for _, testcase := range testcases {
 		base_root := utils.LevelOrderToTree(testcase.base_list)
-		utils.TraverseAndPrintTree(base_root)
 		inverted_root := InvertTree(base_root)
-
-		utils.TraverseAndPrintTree(inverted_root)
 
 		same := utils.IsSameTree(
 			inverted_root,
@@ -27,6 +24,7 @@ func TestInvertTree(t *testing.T) {
 		)
 
 		if !same {
+			utils.TraverseAndPrintTree(inverted_root)
 			t.Errorf(
 				"InvertTree: did not produce inverted %v, want %v",
 				testcase.base_list,
